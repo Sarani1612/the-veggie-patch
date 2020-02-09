@@ -8,17 +8,32 @@
 	<!--Import Google Icon Font-->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!--Import materialize.css-->
-	<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css" integrity="sha256-13EKEXRsynh3cmmNF1dlW6uvoC1SZVaW94bIHZQJoMU=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
 	<title>The Veggie Patch</title>
 </head>
 
 <body>
+	<nav>
+		<div class="nav-wrapper">
+			<a href="#" class="brand-logo">The Veggie Patch</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="#">Categories</a></li>
+				<li><a href="#">Login</a></li>
+                <li>|</li>
+				<li><a href="#">Register</a></li>
+			</ul>
+		</div>
+	</nav>
+	{% block content %}
+	{% endblock %}
 
-    {% block content %}
-    {% endblock %}
-
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js" integrity="sha256-6DDZX77BrYnAmK9a3N3tvNPtyTIk1q1w9iW+UBtot3Y=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+        });
+    </script>
 </body>
 
 </html>
