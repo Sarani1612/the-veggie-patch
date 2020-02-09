@@ -1,0 +1,17 @@
+
+/* Google fonts import */
+@import url('https://fonts.googleapis.com/css?family=Just+Another+Hand&display=swap');
+
+
+.nav-custom {
+    background-color: #78C658;
+}
+
+.navbar-brand {
+    font-family: 'Just Another Hand', cursive;
+    font-size: 3rem;
+}
+
+.navbar-brand img {
+    height: 50px;
+}
