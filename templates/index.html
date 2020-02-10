@@ -2,10 +2,26 @@
 
 {% block content %}
 
-    <div class="row landing-page">
-        <h1>The Veggie Patch</h1>
-        <h2>- Discover and share recipes with fellow vegetarians -</h2>
-    </div>
+<section class="landing-page">
+	<h1>The Veggie Patch</h1>
+	<h2>- Discover and share recipes with fellow vegetarians -</h2>
+</section>
+
+<section class="row">
+	{% for recipe in recipes %}
+	<div class="card" style="width: 18rem;">
+		<img src="{{ url_for('static', filename='images/logo.png') }}" class="card-img-top" alt="Recipe image">
+		<div class="card-body">
+			<h5 class="card-title">{{recipe.name}}</h5>
+		</div>
+	</div>
+    {% endfor %}
+
+</section>
+
+
+
+
 
 
 
