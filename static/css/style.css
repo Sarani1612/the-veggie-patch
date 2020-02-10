@@ -1,10 +1,17 @@
 
 /* Google fonts import */
-@import url('https://fonts.googleapis.com/css?family=Just+Another+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cambay|Just+Another+Hand&display=swap');
+
+body{
+    font-family: 'Cambay', sans-serif;
+}
 
 
+/* Navigation Bar */
 .nav-custom {
     background-color: #78C658;
+    font-size: 1.5rem;
+    padding: 0;
 }
 
 .navbar-brand {
@@ -14,4 +21,44 @@
 
 .navbar-brand img {
     height: 50px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color:rgb(255, 255, 255);
+}
+
+/* Landing-page */
+.landing-page {
+    background-image: url('../images/vegetables.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    height: 67vh;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Just Another Hand', cursive;
+    font-size: 7rem;
+    margin: 100px auto 0;
+}
+
+h2 {
+    font-size: 3.5rem;
+    margin: auto;
+}
+
+
+/* Footer */
+footer {
+    background-color: #78C658;
+    color:rgb(255, 255, 255);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 50px;
 }
