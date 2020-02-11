@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h3 class="recipe-title">{{ recipe.name }}</h3>
+
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-6 recipe-border">
+            <img src="{{ recipe.image_url }}" class="recipe-img" alt="{{ recipe.name }}">
+        </div>
+        <div class="col-6">
+            <p>Mealtype: {{ recipe.mealtype }}</p>
+            <p>Preparation time: {{ recipe.prep_time }}</p>
+            <p>Cooking time: {{ recipe.cook_time }}</p>
+            <p>Number of servings: {{ recipe.serves }}</p>
+        </div>
+    </div>
+    <hr>
+</section>
+
+
+{% endblock %}
