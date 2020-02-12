@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="main-content">
+	<section class="landing-page">
+		<h1>The Veggie Patch</h1>
+		<h2>- Discover and share recipes with fellow vegetarians -</h2>
+	</section>
 
-<section class="landing-page">
-	<h1>The Veggie Patch</h1>
-	<h2>- Discover and share recipes with fellow vegetarians -</h2>
-</section>
-
-<h3>Browse all recipes</h3>
-<section class="row">
-	{% for recipe in recipes %}
-	<div class="card col-md-4 col-lg-3 border-success card-div">
-		<img src="{{recipe.image_url}}" class="card-img-top recipe-img" alt="Recipe image">
-		<div class="card-body">
-			<h5 class="card-title"><a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="stretched-link">{{recipe.name}}</a></h5>
+	<h3>Browse all recipes</h3>
+	<section class="row">
+		{% for recipe in recipes %}
+		<div class="card col-md-4 col-lg-3 border-success card-div">
+			<img src="{{ recipe.image_url }}" class="card-img-top recipe-img" alt="Recipe image">
+			<div class="card-body">
+				<h5 class="card-title"><a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}"
+						class="stretched-link">{{ recipe.name }}</a></h5>
+			</div>
 		</div>
-	</div>
-    {% endfor %}
-
-</section>
-
+		{% endfor %}
+	</section>
+</div>
 
 
 

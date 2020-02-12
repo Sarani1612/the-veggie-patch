@@ -2,38 +2,37 @@
 
 {% block content %}
 
-
-<h3 class="recipe-title">{{ recipe.name }}</h3>
-
-<section class="container-fluid">
-	<div class="row">
-		<div class="col-6 recipe-border">
-			<img src="{{ recipe.image_url }}" class="recipe-img" alt="{{ recipe.name }}">
+<div class=" container-fluid main-content">
+	<h3 class="recipe-title">{{ recipe.name }}</h3>
+	<section>
+		<div class="row">
+			<div class="col-6 recipe-border">
+				<img src="{{ recipe.image_url }}" class="recipe-img" alt="{{ recipe.name }}">
         </div>
-			<div class="col-6">
-				<p>Mealtype: {{ recipe.mealtype }}</p>
-				<p>Preparation time: {{ recipe.prep_time }}</p>
-				<p>Cooking time: {{ recipe.cook_time }}</p>
-				<p>Number of servings: {{ recipe.serves }}</p>
+				<div class="col-6">
+					<p>Mealtype: {{ recipe.mealtype }}</p>
+					<p>Preparation time: {{ recipe.prep_time }}</p>
+					<p>Cooking time: {{ recipe.cook_time }}</p>
+					<p>Number of servings: {{ recipe.serves }}</p>
+				</div>
 			</div>
 		</div>
-	</div>
-	<hr>
-	<div class="row">
-		<div class="col-6 recipe-border">
-			<h4>Ingredients</h4>
-            <u>
-            {% for ingredient in recipe.ingredients %}
-                <li>{{ ingredient }}</li>
-            {% endfor %}
-            </u>
+		<hr>
+		<div class="row">
+			<div class="col-6 recipe-border">
+				<h4>Ingredients</h4>
+				<u>
+					{% for ingredient in recipe.ingredients %}
+					<li>{{ ingredient }}</li>
+					{% endfor %}
+				</u>
+			</div>
+			<div class="col-6">
+				<h4>Instructions</h4>
+				<p>{{ recipe.instructions }}</p>
+			</div>
 		</div>
-		<div class="col-6">
-            <h4>Instructions</h4>
-			<p>{{ recipe.instructions }}</p>
-		</div>
-	</div>
-</section>
-
+	</section>
+</div>
 
 {% endblock %}
