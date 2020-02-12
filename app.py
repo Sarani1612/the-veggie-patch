@@ -26,18 +26,18 @@ def view_recipe(recipe_id):
     return render_template('viewrecipe.html', recipe=current_recipe)
 
 
-@app.route('/mealtypes')
-def mealtypes():
-    return render_template('mealtypes.html',
-                           mealtypes=mongo.db.mealtypes.find())
+@app.route('/categories')
+def categories():
+    return render_template('categories.html',
+                           categories=mongo.db.categories.find())
 
 
-@app.route('/mealtypes/<mealtype>')
-def view_mealtype(mealtype):
-    recipes = mongo.db.recipes.find({"mealtype": mealtype})
-    return render_template('viewmealtype.html',
+@app.route('/categories/<category_name>')
+def view_category(category_name):
+    recipes = mongo.db.recipes.find({"category_name": category_name})
+    return render_template('viewcategory.html',
                            recipes=recipes,
-                           mealtype_title=mealtype)
+                           category_heading=category_name)
 
 
 if __name__ == '__main__':

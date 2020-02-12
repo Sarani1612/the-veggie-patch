@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="main-content">
+	<h3>Browse by Category</h3>
+	<section class="row">
+		{% for category in categories %}
+		<div class="card col-md-4 col-lg-3 border-success card-div">
+			<img src="{{ category.category_url }}" class="card-img-top recipe-img" alt="{{ category.category_name }}">
+			<div class="card-body">
+				<h5 class="card-title"><a href="{{ url_for('view_category', category_name=category.category_name) }}" class="stretched-link">{{ category.category_name }}</a></h5>
+			</div>
+		</div>
+        {% endfor %}
+	</section>
+</div>
+
+{% endblock %}
