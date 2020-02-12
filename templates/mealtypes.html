@@ -9,7 +9,7 @@
 		<div class="card col-md-4 col-lg-3 border-success card-div">
 			<img src="{{ meal.meal_url }}" class="card-img-top recipe-img" alt="{{ meal.mealtype }}">
 			<div class="card-body">
-				<h5 class="card-title"><a href="#" class="stretched-link">{{ meal.mealtype }}</a></h5>
+				<h5 class="card-title"><a href="{{ url_for('view_mealtype', mealtype=meal.mealtype) }}" class="stretched-link">{{ meal.mealtype }}</a></h5>
 			</div>
 		</div>
         {% endfor %}

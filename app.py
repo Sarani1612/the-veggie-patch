@@ -13,6 +13,7 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 mongo = PyMongo(app)
 
+
 @app.route('/')
 @app.route('/index')
 def index():
@@ -27,7 +28,16 @@ def view_recipe(recipe_id):
 
 @app.route('/mealtypes')
 def mealtypes():
-    return render_template('mealtypes.html', mealtypes=mongo.db.mealtypes.find())
+    return render_template('mealtypes.html',
+                           mealtypes=mongo.db.mealtypes.find())
+
+
+@app.route('/mealtypes/<mealtype>')
+def view_mealtype(mealtype):
+    recipes = mongo.db.recipes.find({"mealtype": mealtype})
+    return render_template('viewmealtype.html',
+                           recipes=recipes,
+                           mealtype_title=mealtype)
 
 
 if __name__ == '__main__':

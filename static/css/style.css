@@ -13,7 +13,7 @@ body{
 
 /* Navigation Bar */
 .nav-custom {
-    background-color: #78C658;
+    background-color: #026318;
     font-size: 1.5rem;
     padding: 0;
 }
@@ -28,9 +28,10 @@ body{
 }
 
 .navbar-dark .navbar-nav .nav-link {
-    color:rgb(255, 255, 255);
+    color:#fff;
 }
 
+/* Positions main content in all views */
 .main-content {
     margin-top: 125px;
     flex: 1;
@@ -46,7 +47,7 @@ body{
     overflow: hidden;
     position: relative;
     height: 67vh;
-    color: rgb(255, 255, 255);
+    color: #fff;
 }
 
 h1 {
@@ -64,9 +65,11 @@ h2 {
     object-fit: cover;
 }
 
+.card-div a {
+    color: #026318;
+}
 
 /* Recipe View */
-
 .recipe-border {
     border-right: solid rgb(0,0,0,0.25) 1px
 }
@@ -75,13 +78,9 @@ hr {
     border-top: solid rgba(0,0,0,0.25) 1px;
 }
 
-
 /* Footer */
 footer {
-    background-color: #78C658;
-    color:rgb(255, 255, 255);
-    display: block;
-    bottom: 0;
-    width: 100%;
+    background-color: #026318;
+    color:#fff;
     min-height: 50px;
 }
