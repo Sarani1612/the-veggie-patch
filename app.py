@@ -40,6 +40,11 @@ def view_category(category_name):
                            category_heading=category_name)
 
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),

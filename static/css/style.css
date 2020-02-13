@@ -80,6 +80,13 @@ hr {
     border-top: solid rgba(0,0,0,0.25) 1px;
 }
 
+.form-box {
+    max-width: 500px;
+    margin: auto;
+    border: solid #026318 1px;
+    padding: 1rem;
+}
+
 /* Footer */
 footer {
     background-color: #026318;
