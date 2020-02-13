@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main-content">
+	<h3>Add a recipe</h3>
+    <div class="form-box">
+        <form>
+            <div class="form-group row">
+                <label for="recipe-name" class="col-sm-4 col-form-label">Recipe name:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control form-control-sm" id="recipe-name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="category" class="col-sm-4 col-form-label">Category:</label>
+                <div class="col-sm-8">
+                    <select class="form-control form-control-sm" name="category" id="category">
+                        <option value="Breakfast">Breakfast</option>
+                        <option value="Starter">Starter</option>
+                        <option value="Main">Main</option>
+                        <option value="Dessert">Dessert</option>
+                        <option value="Baking">Baking</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="prep-time" class="col-sm-4 col-form-label">Prep time:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control form-control-sm" id="prep-time">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="cook-time" class="col-sm-4 col-form-label">Cooking time:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control form-control-sm" id="cook-time">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="number-servings" class="col-sm-4 col-form-label">Servings:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control form-control-sm" id="number-servings">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="ingredient-list" class="col-sm-4 col-form-label">Ingredients:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control form-control-sm" id="ingredient-list">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="img-url" class="col-sm-4 col-form-label">Image URL:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control form-control-sm" id="img-url">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="instructions" class="col-sm-4 col-form-label">Instructions:</label>
+                <div class="col-sm-8">
+                    <textarea class="form-control form-control-sm" id="instructions" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="id-key" class="col-sm-4 col-form-label">Secret key:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control form-control-sm" id="id-key">
+                    <span id="id-key-help" class="form-text text-muted">
+                    You will need this key if you want to edit or delete the recipe later.
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12 text-center">
+                    <button type="submit" class="btn btn-custom">Add!</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+{% endblock %}

@@ -40,6 +40,11 @@ def view_category(category_name):
                            category_heading=category_name)
 
 
+@app.route('/add_recipe')
+def add_recipe():
+    return render_template('addrecipe.html')
+
+
 @app.route('/login')
 def login():
     return render_template('login.html')
