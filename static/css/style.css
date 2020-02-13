@@ -60,6 +60,17 @@ h2 {
     font-size: 3.5rem;
 }
 
+/* Custom styling for buttons */
+.btn-custom {
+    background-color: #026318;
+    color: #fff;
+    min-width: 5rem;
+}
+
+.edit-btn {
+    margin-top: 2rem;
+}
+
 /* Recipe cards */
 .recipe-img {
     width: 100%;
@@ -85,11 +96,13 @@ hr {
     margin: auto;
     border: solid #026318 1px;
     padding: 1rem;
+    text-align: left;
 }
 
 /* Footer */
 footer {
     background-color: #026318;
     color:#fff;
-    min-height: 50px;
+    min-height: 60px;
+    margin-top: 1rem;
 }
