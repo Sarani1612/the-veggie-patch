@@ -42,7 +42,24 @@ def view_category(category_name):
 
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template('addrecipe.html')
+    return render_template('addrecipe.html', 
+                           categories=mongo.db.categories.find())
+
+
+@app.route('/insert_recipe', methods=["POST"])
+def insert_recipe():
+    recipes = mongo.db.recipes
+    new_recipe = {'name': request.form.get('recipe_name'),
+                  'category_name': request.form.get('category_name'),
+                  'prep_time': request.form.get('prep_time'),
+                  'cook_time': request.form.get('cook_time'),
+                  'serves': request.form.get('serves'),
+                  'ingredients': request.form.get('ingredients'),
+                  'image_url': request.form.get('image_url'),
+                  'instructions': request.form.get('instructions'),
+                  'id_key': request.form.get('id_key')}
+    recipes.insert_one(new_recipe)
+    return redirect(url_for('index'))
 
 
 @app.route('/login')
