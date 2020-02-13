@@ -54,7 +54,7 @@ def insert_recipe():
                   'prep_time': request.form.get('prep_time'),
                   'cook_time': request.form.get('cook_time'),
                   'serves': request.form.get('serves'),
-                  'ingredients': request.form.get('ingredients'),
+                  'ingredients': request.form.get('ingredients').split(","),
                   'image_url': request.form.get('image_url'),
                   'instructions': request.form.get('instructions'),
                   'id_key': request.form.get('id_key')}

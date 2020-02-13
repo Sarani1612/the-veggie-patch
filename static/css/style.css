@@ -92,11 +92,16 @@ hr {
 }
 
 .form-box {
-    max-width: 500px;
+    max-width: 1000px;
     margin: auto;
     border: solid #026318 1px;
     padding: 1rem;
     text-align: left;
+}
+
+.forms {
+    max-width: 75%;
+    margin: auto;
 }
 
 /* Footer */

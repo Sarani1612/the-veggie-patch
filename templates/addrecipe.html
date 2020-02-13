@@ -4,7 +4,7 @@
 <div class="main-content">
 	<h3>Add a recipe</h3>
     <div class="form-box">
-        <form action="{{ url_for('insert_recipe') }}" method="POST">
+        <form  action="{{ url_for('insert_recipe') }}" method="POST" class="forms">
             <div class="form-group row">
                 <label for="recipe-name" class="col-sm-4 col-form-label">Recipe name:</label>
                 <div class="col-sm-8">
@@ -40,10 +40,10 @@
                     <input type="text" class="form-control form-control-sm" name="serves" id="serves">
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row" id="ingredients-wrapper">
                 <label for="ingredient-list" class="col-sm-4 col-form-label">Ingredients:</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control form-control-sm" name="ingredients" id="ingredients">
+                    <input type="text" class="form-control form-control-sm" name="ingredients" id="ingredients" placeholder="Comma-separate ingredients">
                 </div>
             </div>
             <div class="form-group row">
@@ -62,13 +62,13 @@
                 <label for="id-key" class="col-sm-4 col-form-label">Secret key:</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control form-control-sm" name="id_key" id="id_key">
-                    <span id="id-key-help" class="form-text text-muted">
+                    <smalln id="id-key-help" class="form-text text-muted">
                     You will need this key if you want to edit or delete the recipe later.
-                    </span>
+                    </small>
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-sm-12 text-center">
+                <div class="col-sm-12 text-right">
                     <button type="submit" class="btn btn-custom">Add!</button>
                 </div>
             </div>
