@@ -2,18 +2,18 @@
 
 {% block content %}
 
-<div class="main-content">
+<div class="container main-content">
 	<h3>Browse by Category</h3>
-	<section class="row">
+	<div class="row">
 		{% for category in categories %}
-		<div class="card col-md-4 col-lg-3 border-success card-div">
-			<img src="{{ category.category_url }}" class="card-img-top recipe-img" alt="{{ category.category_name }}">
-			<div class="card-body">
-				<h5 class="card-title"><a href="{{ url_for('view_category', category_name=category.category_name) }}" class="stretched-link">{{ category.category_name }}</a></h5>
-			</div>
+		<div class="col-md-4 mb-2">
+            <div class="align-items-center justify-content-center h-100 w-100 mx-auto card-div">
+                <img src="{{ category.category_url }}" class="card-img" alt="{{ category.category_name }}">
+                <a href="{{ url_for('view_category', category_name=category.category_name) }}" class="stretched-link">{{ category.category_name }}</a>
+            </div>
 		</div>
         {% endfor %}
-	</section>
+	</div>
 </div>
 
 {% endblock %}
