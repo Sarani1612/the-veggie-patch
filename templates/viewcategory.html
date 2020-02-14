@@ -2,18 +2,17 @@
 
 {% block content %}
 
-<div class="main-content">
+<div class="container main-content">
 	<h3>{{ category_heading }}</h3>
 	<section class="row">
 		{% for recipe in recipes %}
-		<div class="card col-md-4 col-lg-3 border-success card-div">
-			<img src="{{ recipe.image_url }}" class="card-img-top recipe-img" alt="{{ recipe.name }}">
-			<div class="card-body">
-				<h5 class="card-title"><a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="stretched-link">{{ recipe.name }}</a></h5>
-			</div>
+		<div class="col-md-4 mb-2">
+            <div class="align-items-center justify-content-center h-100 w-100 mx-auto card-div">
+                <img src="{{ recipe.image_url }}" class="card-img" alt="{{ recipe.name }}">
+                <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="stretched-link">{{ recipe.name }}</a>
+            </div>
 		</div>
         {% endfor %}
 	</section>
 </div>
-
 {% endblock %}
