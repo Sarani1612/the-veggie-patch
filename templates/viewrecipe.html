@@ -4,12 +4,12 @@
 
 <div class=" container main-content">
 	<h3 class="recipe-title">{{ recipe.name }}</h3>
-	<section>
+	<section class="view-recipe">
 		<div class="row">
 			<div class="col-6 recipe-border">
-				<img src="{{ recipe.image_url }}" class="recipe-img w-100 h-100" alt="{{ recipe.name }}">
+				<img src="{{ recipe.image_url }}" class="recipe-img w-100" alt="{{ recipe.name }}">
             </div>
-			<div class="col-6">
+			<div class="col-6 align-self-center">
                 <p>Mealtype: {{ recipe.mealtype }}</p>
                 <p>Preparation time: {{ recipe.prep_time }}</p>
                 <p>Cooking time: {{ recipe.cook_time }}</p>
