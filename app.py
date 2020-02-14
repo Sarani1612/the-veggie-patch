@@ -42,7 +42,7 @@ def view_category(category_name):
 
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template('addrecipe.html', 
+    return render_template('addrecipe.html',
                            categories=mongo.db.categories.find())
 
 
@@ -60,6 +60,17 @@ def insert_recipe():
                   'id_key': request.form.get('id_key')}
     recipes.insert_one(new_recipe)
     return redirect(url_for('index'))
+
+
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template('editrecipe.html', recipe=this_recipe)
+
+
+@app.route('/submit_edit/<recipe_id>', methods=["POST"])
+def submit_edit(recipe_id):
+    return redirect(url_for('view_recipe'))
 
 
 @app.route('/login')
