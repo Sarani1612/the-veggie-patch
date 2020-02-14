@@ -2,12 +2,12 @@
 
 {% block content %}
 
-<div class=" container-fluid main-content">
+<div class=" container main-content">
 	<h3 class="recipe-title">{{ recipe.name }}</h3>
 	<section>
 		<div class="row">
 			<div class="col-6 recipe-border">
-				<img src="{{ recipe.image_url }}" class="recipe-img" alt="{{ recipe.name }}">
+				<img src="{{ recipe.image_url }}" class="recipe-img w-100 h-100" alt="{{ recipe.name }}">
             </div>
 			<div class="col-6">
                 <p>Mealtype: {{ recipe.mealtype }}</p>
