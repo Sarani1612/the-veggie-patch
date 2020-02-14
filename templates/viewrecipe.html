@@ -33,7 +33,7 @@
         </div>
         <div class="row edit-btn">
             <div class="col-sm-12 text-center">
-                <button class="btn btn-custom">Edit recipe</button>
+                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn btn-custom">Edit recipe</a>
             </div>
         </div>
 	</section>

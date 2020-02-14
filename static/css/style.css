@@ -109,6 +109,11 @@ hr {
     text-align: left;
 }
 
+.arrow-custom {
+    cursor: pointer;
+    font-size: 38px;
+    color: #026318;
+}
 
 /* Form styling */
 .form-box {
