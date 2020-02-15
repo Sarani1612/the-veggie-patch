@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from os import path
@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
@@ -62,10 +63,18 @@ def insert_recipe():
     return redirect(url_for('index'))
 
 
-@app.route('/edit_recipe/<recipe_id>')
+'''
+Checks if the key supplied by the user matches the one in the database.
+If yes, the user is sent to a form where they can edit the recipe.
+If not, they are sent back to the recipe.
+'''
+@app.route('/edit_recipe/<recipe_id>', methods=["POST"])
 def edit_recipe(recipe_id):
-    this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template('editrecipe.html', recipe=this_recipe)
+    if request.method == 'POST':
+        this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+        if request.form['edit_key'] == this_recipe['id_key']:
+            return render_template('editrecipe.html', recipe=this_recipe)
+        return redirect(url_for('view_recipe', recipe_id=this_recipe['_id']))
 
 
 @app.route('/submit_edit/<recipe_id>', methods=["POST"])

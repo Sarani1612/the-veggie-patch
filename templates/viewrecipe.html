@@ -40,7 +40,7 @@
                     <form action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" method="POST">
                         <div class="form-group modal-input">
                             <label for="enter-key">Please enter your key:</label>
-                            <input type="text" class="form-control" id="edit-key">
+                            <input type="text" class="form-control" id="edit_key" name="edit_key">
                         </div>
                         <button type="submit" class="btn btn-custom">Edit recipe</Button>
                     </form>
