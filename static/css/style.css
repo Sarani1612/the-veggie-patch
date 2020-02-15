@@ -129,6 +129,32 @@ hr {
     margin: auto;
 }
 
+/* Modal */
+#edit-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0,0.75);
+}
+
+#modal-content {
+    width: 80%;
+    margin: auto;
+    background-color: #fff;
+    padding: 3rem;
+    text-align: center;
+}
+
+.modal-input {
+    max-width: 400px;
+    margin: 1rem auto;
+}
+
 /* Footer */
 footer {
     background-color: #026318;
