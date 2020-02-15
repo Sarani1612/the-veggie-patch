@@ -1,6 +1,6 @@
 
 /* Google fonts import */
-@import url('https://fonts.googleapis.com/css?family=Cambay|Just+Another+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cambay:400,700|Just+Another+Hand&display=swap');
 
 /* Overall settings for all pages*/
 body{
@@ -28,6 +28,7 @@ body{
 
 .navbar-dark .navbar-nav .nav-link {
     color:#fff;
+    font-weight: 700;
 }
 
 /* Positions main content in all views */

@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <div class="main-content">
 	<h3>Edit your recipe here</h3>
+    <!-- Form for editing a recipe. Input fields autopopulated from MongoDB database. -->
     <div class="form-box">
         <form  action="{{ url_for('submit_edit', recipe_id=recipe._id) }}" method="POST" class="forms">
             <div class="form-group row">
@@ -67,6 +69,7 @@
                     </small>
                 </div>
             </div>
+            <!-- Arrow for going back to the recipe -->
             <div class="form-group row">
                 <div class="col text-left">
                     <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}"><i class="fas fa-arrow-left arrow-custom"></i></a>
@@ -77,7 +80,5 @@
             </div>
         </form>
     </div>
-
-
 </div>
 {% endblock %}

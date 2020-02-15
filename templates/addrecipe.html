@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <div class="main-content">
 	<h3>Add a recipe</h3>
+    <!-- Form for adding a recipe to the database -->
     <div class="form-box">
         <form  action="{{ url_for('insert_recipe') }}" method="POST" class="forms">
             <div class="form-group row">
@@ -74,7 +76,6 @@
             </div>
         </form>
     </div>
-
-
 </div>
+
 {% endblock %}
