@@ -4,23 +4,23 @@
 
 <!-- Shows details for a specific recipe -->
 <div class=" container main-content">
-	<h3 class="recipe-title">{{ recipe.name }}</h3>
+	<h3>{{ recipe.name }}</h3>
 	<section class="view-recipe">
 		<div class="row">
             <!-- Recipe image -->
-			<div class="col-6 recipe-border">
+			<div class="col-md-6 recipe-border">
 				<img src="{{ recipe.image_url }}" class="recipe-img w-100" alt="{{ recipe.name }}">
             </div>
-			<div class="col-6 align-self-center">
-                <p><strong>Mealtype:</strong> {{ recipe.mealtype }}</p>
-                <p><strong>Preparation time:</strong> {{ recipe.prep_time }}</p>
-                <p><strong>Cooking time:</strong> {{ recipe.cook_time }}</p>
-                <p><strong>Number of servings:</strong> {{ recipe.serves }}</p>
+			<div class="col-md-6 align-self-center">
+                <p><strong><i class="fas fa-pizza-slice"></i> Mealtype:</strong> {{ recipe.mealtype }}</p>
+                <p><strong><i class="fas fa-clock"></i> Preparation time:</strong> {{ recipe.prep_time }}</p>
+                <p><strong><i class="fas fa-clock"></i> Cooking time:</strong> {{ recipe.cook_time }}</p>
+                <p><strong><i class="fas fa-utensils"></i> Number of servings:</strong> {{ recipe.serves }}</p>
 			</div>
 		</div>
 		<hr>
         <div class="row">
-            <div class="col-6 recipe-border">
+            <div class="col-md-6 recipe-border">
                 <h4>Ingredients</h4>
                 <ul>
                     {% for ingredient in recipe.ingredients %}
@@ -28,7 +28,7 @@
                     {% endfor %}
                 </ul>
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
                 <h4>Instructions</h4>
                 <p>{{ recipe.instructions }}</p>
             </div>
