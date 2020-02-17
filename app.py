@@ -70,21 +70,39 @@ If not, they are sent back to the recipe.
 '''
 @app.route('/edit_recipe/<recipe_id>', methods=["POST"])
 def edit_recipe(recipe_id):
-    if request.method == 'POST':
-        this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-        if request.form['edit_key'] == this_recipe['id_key']:
-            return render_template('editrecipe.html', recipe=this_recipe)
-        return redirect(url_for('view_recipe', recipe_id=this_recipe['_id']))
+    this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    if request.form['edit_key'] == this_recipe['id_key']:
+        return render_template('editrecipe.html',
+                               recipe=this_recipe,
+                               categories=mongo.db.categories.find())
+    return redirect(url_for('view_recipe', recipe_id=this_recipe['_id']))
 
 
+'''
+Checks if the 'delete' checkbox has been checked. If yes, the recipe is deleted entirely from the database.
+If not, the recipe is updated.
+'''
 @app.route('/submit_edit/<recipe_id>', methods=["POST"])
 def submit_edit(recipe_id):
-    return redirect(url_for('view_recipe'))
-
-
-@app.route('/login')
-def login():
-    return render_template('login.html')
+    recipes = mongo.db.recipes
+    this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    if request.form.get('delete') == 'checked':
+        recipes.remove_one(this_recipe)
+        return render_template('index.html', recipes=mongo.db.recipes.find())
+    else:
+        recipes.update_one({"_id": ObjectId(recipe_id)},
+        {"$set":
+            {'name': request.form.get('recipe_name'),
+            'category_name': request.form.get('category_name'),
+            'prep_time': request.form.get('prep_time'),
+            'cook_time': request.form.get('cook_time'),
+            'serves': request.form.get('serves'),
+            'ingredients': request.form.get('ingredients').split(","),
+            'image_url': request.form.get('image_url'),
+            'instructions': request.form.get('instructions'),
+            'id_key': request.form.get('id_key')
+        }})
+        return redirect(url_for('view_recipe', recipe_id=this_recipe['_id']))
 
 
 if __name__ == '__main__':
