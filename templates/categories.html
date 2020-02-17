@@ -3,18 +3,20 @@
 {% block content %}
 
 <!-- Displays a clickable card for each category -->
-<div class="container main-content">
-	<h3>Browse by Category</h3>
-	<div class="row">
-		{% for category in categories %}
-		<div class="col-md-4 mb-2">
-            <div class="align-items-center justify-content-center h-100 w-100 mx-auto card-div">
-                <img src="{{ category.category_url }}" class="card-img" alt="{{ category.category_name }}">
-                <a href="{{ url_for('view_category', category_name=category.category_name) }}" class="stretched-link">{{ category.category_name }}</a>
+<section class="main-content">
+    <div class="container">
+        <h3>Browse by Category</h3>
+        <div class="row">
+            {% for category in categories %}
+            <div class="col-md-4 mb-2">
+                <div class="align-items-center justify-content-center h-100 w-100 mx-auto card-div">
+                    <img src="{{ category.category_url }}" class="card-img" alt="{{ category.category_name }}">
+                    <a href="{{ url_for('view_category', category_name=category.category_name) }}" class="stretched-link">{{ category.category_name }}</a>
+                </div>
             </div>
-		</div>
-        {% endfor %}
-	</div>
-</div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
 {% endblock %}
