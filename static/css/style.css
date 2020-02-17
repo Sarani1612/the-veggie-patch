@@ -29,6 +29,7 @@ body{
 .navbar-dark .navbar-nav .nav-link {
     color:#fff;
     font-weight: 700;
+    padding-right: 1.5rem;
 }
 
 /* Positions main content in all views */
@@ -55,7 +56,7 @@ body{
 h1 {
     font-family: 'Just Another Hand', cursive;
     font-size: 6rem;
-    /* margin-top: 75px; */
+    margin-top: 5rem;
 }
 
 h2 {
