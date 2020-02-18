@@ -54,6 +54,10 @@ def add_recipe():
                            title='Add a Recipe')
 
 
+'''
+Gets data from the form the user has filled out and inserts the recipe in the database.
+Returns a view of the new recipe.
+'''
 @app.route('/insert_recipe', methods=["POST"])
 def insert_recipe():
     recipes = mongo.db.recipes
@@ -66,8 +70,9 @@ def insert_recipe():
                   'image_url': request.form.get('image_url'),
                   'instructions': request.form.get('instructions'),
                   'id_key': request.form.get('id_key')}
-    recipes.insert_one(new_recipe)
-    return redirect(url_for('index'))
+    new_id = recipes.insert_one(new_recipe)
+    return redirect(url_for('view_recipe',
+                            recipe_id=new_id.inserted_id))
 
 
 '''
@@ -83,7 +88,8 @@ def edit_recipe(recipe_id):
                                recipe=this_recipe,
                                categories=mongo.db.categories.find(),
                                title='Edit Recipe')
-    return redirect(url_for('view_recipe', recipe_id=this_recipe['_id']))
+    return redirect(url_for('view_recipe',
+                            recipe_id=this_recipe['_id']))
 
 
 '''
@@ -96,7 +102,7 @@ def submit_edit(recipe_id):
     recipes = mongo.db.recipes
     this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     if request.form.get('delete') == 'checked':
-        recipes.remove_one(this_recipe)
+        recipes.remove(this_recipe)
         return render_template('index.html',
                                recipes=mongo.db.recipes.find(),
                                title='The Veggie Patch')
@@ -114,13 +120,8 @@ def submit_edit(recipe_id):
                                'instructions': request.form.get('instructions'),
                                'id_key': request.form.get('id_key')
                             }})
-        return redirect(url_for('view_recipe', recipe_id=this_recipe['_id']))
-
-
-@app.route('/login')
-def login():
-    return render_template('login.html',
-                           title='Log in')
+        return redirect(url_for('view_recipe',
+                                recipe_id=this_recipe['_id']))
 
 
 if __name__ == '__main__':
