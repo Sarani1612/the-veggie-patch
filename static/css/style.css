@@ -20,6 +20,11 @@ body{
 .navbar-brand {
     font-family: 'Just Another Hand', cursive;
     font-size: 2.5rem;
+    transition: transform 0.5s;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.1);
 }
 
 .navbar-brand img {
@@ -83,6 +88,7 @@ h3 {
     width: 100%;
     height: 13rem;
     object-fit: cover;
+    margin-bottom: 0.5rem;
     border-top-left-radius: 10%;
     border-top-right-radius: 10%;
 }
@@ -95,6 +101,10 @@ h3 {
 
 .card-div a {
     color: #026318;
+}
+
+.card-div a:hover {
+    text-decoration: none;
 }
 
 /* Recipe View */
@@ -178,8 +188,15 @@ footer p {
 }
 
 footer i {
+    padding: 0 5px;
     font-size: 2rem;
-    color: white;
+    color: #fff;
+    transition: all 0.5s ease-out;
+}
+
+footer i:hover {
+    transform: scale(1.5);
+    color: #c1dec8;
 }
 
 
