@@ -127,6 +127,18 @@ def submit_edit(recipe_id):
                                 recipe_id=this_recipe['_id']))
 
 
+@app.route('/search')
+def search():
+    return render_template('search.html')
+
+
+@app.route('/searchresults', methods=['POST'])
+def search_results():
+    query = request.form['search']
+    results = mongo.db.recipes.find({"$text": {"$search": query}})
+    return render_template('searchresults.html', results=results, query=query)
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
