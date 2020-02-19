@@ -14,12 +14,15 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-
+'''
+Groups all recipes by category and renders them on the landing page view.
+'''
 @app.route('/')
 @app.route('/index')
 def index():
+    recipes = mongo.db.recipes.find().sort('category_name', 1)
     return render_template('index.html',
-                           recipes=mongo.db.recipes.find(),
+                           recipes=recipes,
                            title='The Veggie Patch')
 
 
@@ -40,7 +43,7 @@ def categories():
 
 @app.route('/categories/<category_name>')
 def view_category(category_name):
-    recipes = mongo.db.recipes.find({"category_name": category_name})
+    recipes = mongo.db.recipes.find({"category_name": category_name}).sort('name', 1)
     return render_template('viewcategory.html',
                            recipes=recipes,
                            category_heading=category_name,
