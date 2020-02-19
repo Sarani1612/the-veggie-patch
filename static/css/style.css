@@ -184,6 +184,9 @@ footer {
 
 footer p {
     margin: 5px auto;
+}
+
+.footer-bold {
     font-weight: 700;
 }
 
