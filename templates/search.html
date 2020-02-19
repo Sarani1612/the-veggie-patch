@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="main-content">
+    <form method="POST">
+        <label for="search">Search:</label>
+        <input type="text" id="search" name="search">
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="container">
+        <h3>Browse all recipes</h3>
+        <div class="row">
+            {% for res in results %}
+            <div class="col-md-4 mb-2">
+                <div class="align-items-center justify-content-center h-100 w-100 mx-auto card-div">
+                    <img src="{{ res.image_url }}" class="card-img" alt="{{ res.name }}">
+                    <a href="{{ url_for('view_recipe', recipe_id=res._id) }}" class="stretched-link">{{ res.name }}</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+</section>
+
+{% endblock %}
