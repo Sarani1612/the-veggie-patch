@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import pymongo
 from os import path
 if path.exists("env.py"):
     import env
@@ -134,6 +135,7 @@ def search():
 
 @app.route('/searchresults', methods=['POST'])
 def search_results():
+    mongo.db.recipes.create_index([("ingredients", pymongo.TEXT), ("name", pymongo.TEXT)])
     query = request.form['search']
     results = mongo.db.recipes.find({"$text": {"$search": query}})
     return render_template('searchresults.html', results=results, query=query)
