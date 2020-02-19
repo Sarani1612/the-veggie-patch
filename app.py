@@ -136,7 +136,7 @@ def search():
 @app.route('/searchresults', methods=['POST'])
 def search_results():
     mongo.db.recipes.create_index([("ingredients", pymongo.TEXT), ("name", pymongo.TEXT)])
-    query = request.form['search']
+    query = request.form['searchbox']
     results = mongo.db.recipes.find({"$text": {"$search": query}})
     return render_template('searchresults.html', results=results, query=query)
 
