@@ -1,9 +1,9 @@
 
 // Opens modal when user clicks on the button to edit a recipe
 var modal = document.getElementById("edit-modal");
-var btn = document.getElementById("modal-button");
+var button = document.getElementById("modal-button");
 
-btn.onclick = function() {
+button.onclick = function() {
   modal.style.display = "block";
 }
 

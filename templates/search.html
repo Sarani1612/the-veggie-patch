@@ -3,11 +3,13 @@
 {% block content %}
 
 <section class="main-content">
-    <div class="container">
+    <div class="form-box search-box w-75 text-center">
         <form action="{{ url_for('search_results') }}" method="POST" class="forms">
-            <label for="searchbox" class="form-label">Search:</label>
+            <label for="searchbox" class="form-label">Search based on ingredients or recipe name:</label>
             <input type="search" class="form-control form-control-sm" id="searchbox" name="searchbox">
-            <button type="submit" class="btn btn-custom">Search</button>
+            <div class="search-btn">
+                <button type="submit" class="btn btn-custom">Search</button>
+            </div>
         </form>
     </div>
 </section>

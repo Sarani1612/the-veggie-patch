@@ -139,9 +139,12 @@ def search_results():
     '''
     Allows the user to search for recipes using words from the ingredients and name fields.
     '''
-    search = request.form['searchbox']
-    results = mongo.db.recipes.find({"$text": {"$search": search}})
-    return render_template('searchresults.html', results=results, query=search)
+    query = request.form['searchbox']
+    results = mongo.db.recipes.find({"$text": {"$search": query}})
+    return render_template('searchresults.html',
+                           results=results,
+                           query=query,
+                           title=f"Results for '{query}'")
 
 
 if __name__ == '__main__':

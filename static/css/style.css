@@ -147,6 +147,10 @@ hr {
     margin: auto;
 }
 
+.search-btn {
+    margin-top: 15px;
+}
+
 /* Modal */
 #edit-modal {
     display: none;
