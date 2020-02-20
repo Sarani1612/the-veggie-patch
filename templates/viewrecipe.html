@@ -20,7 +20,7 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-md-6 recipe-border">
+            <div class="col-md-6 recipe-border text-left">
                 <h4>Ingredients</h4>
                 <ul>
                     {% for ingredient in recipe.ingredients %}
@@ -28,7 +28,7 @@
                     {% endfor %}
                 </ul>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 text-left">
                 <h4>Instructions</h4>
                 <p>{{ recipe.instructions }}</p>
             </div>
@@ -41,7 +41,7 @@
                 <div id="modal-content" class="text-center">
                     <form action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" method="POST">
                         <div class="form-group modal-input">
-                            <label for="enter-key">Please enter your key:</label>
+                            <label for="edit_key">Please enter your key in order to edit or delete the recipe:</label>
                             <input type="text" class="form-control" id="edit_key" name="edit_key">
                         </div>
                         <button type="submit" class="btn btn-custom">Edit recipe</Button>
