@@ -15,12 +15,12 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-'''
-Groups all recipes by category and renders them on the landing page view.
-'''
 @app.route('/')
 @app.route('/index')
 def index():
+    '''
+    Groups all recipes by category and renders them on the landing page view.
+    '''
     recipes = mongo.db.recipes.find().sort('category_name', 1)
     return render_template('index.html',
                            recipes=recipes,
@@ -58,12 +58,12 @@ def add_recipe():
                            title='Add a Recipe')
 
 
-'''
-Gets data from the form the user has filled out and inserts the recipe in the database.
-Returns a view of the new recipe.
-'''
 @app.route('/insert_recipe', methods=["POST"])
 def insert_recipe():
+    '''
+    Gets data from the form the user has filled out and inserts the recipe in the database.
+    Returns a view of the new recipe.
+    '''
     recipes = mongo.db.recipes
     new_recipe = {'name': request.form.get('recipe_name'),
                   'category_name': request.form.get('category_name'),
@@ -79,13 +79,13 @@ def insert_recipe():
                             recipe_id=new_id.inserted_id))
 
 
-'''
-Checks if the key supplied by the user matches the one in the database.
-If yes, the user is sent to a form where they can edit the recipe.
-If not, they are sent back to the recipe.
-'''
 @app.route('/edit_recipe/<recipe_id>', methods=["POST"])
 def edit_recipe(recipe_id):
+    '''
+    Checks if the key supplied by the user matches the one in the database.
+    If yes, the user is sent to a form where they can edit the recipe.
+    If not, they are sent back to the recipe.
+    '''
     this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     if request.form['edit_key'] == this_recipe['id_key']:
         return render_template('editrecipe.html',
@@ -96,13 +96,13 @@ def edit_recipe(recipe_id):
                             recipe_id=this_recipe['_id']))
 
 
-'''
-Checks if the 'delete' checkbox has been checked.
-If yes, the recipe is deleted entirely from the database.
-If not, the recipe is updated.
-'''
 @app.route('/submit_edit/<recipe_id>', methods=["POST"])
 def submit_edit(recipe_id):
+    '''
+    Checks if the 'delete' checkbox has been checked.
+    If yes, the recipe is deleted entirely from the database.
+    If not, the recipe is updated.
+    '''
     recipes = mongo.db.recipes
     this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     if request.form.get('delete') == 'checked':
@@ -130,11 +130,15 @@ def submit_edit(recipe_id):
 
 @app.route('/search')
 def search():
-    return render_template('search.html')
+    return render_template('search.html',
+                           title='Search Recipes')
 
 
 @app.route('/searchresults', methods=['POST'])
 def search_results():
+    '''
+    Allows the user to search for recipes using words from the ingredients and name fields.
+    '''
     search = request.form['searchbox']
     results = mongo.db.recipes.find({"$text": {"$search": search}})
     return render_template('searchresults.html', results=results, query=search)
