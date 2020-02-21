@@ -89,8 +89,8 @@ h3 {
     height: 13rem;
     object-fit: cover;
     margin-bottom: 0.5rem;
-    border-top-left-radius: 10%;
-    border-top-right-radius: 10%;
+    border-top-left-radius: 11%;
+    border-top-right-radius: 11%;
 }
 
 .card-div {
