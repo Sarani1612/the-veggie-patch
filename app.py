@@ -15,6 +15,7 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+
 @app.route('/')
 @app.route('/index')
 def index():
