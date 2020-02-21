@@ -106,7 +106,7 @@ def submit_edit(recipe_id):
     recipes = mongo.db.recipes
     this_recipe = mongo.db.recipes.find_one_or_404({"_id": ObjectId(recipe_id)})
     if request.form.get('delete') == 'checked':
-        recipes.remove(this_recipe)
+        recipes.delete_one(this_recipe)
         return render_template('index.html',
                                recipes=mongo.db.recipes.find(),
                                title='The Veggie Patch')
