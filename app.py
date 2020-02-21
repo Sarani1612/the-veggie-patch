@@ -30,7 +30,7 @@ def index():
 
 @app.route('/view_recipe/<recipe_id>')
 def view_recipe(recipe_id):
-    current_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    current_recipe = mongo.db.recipes.find_one_or_404({"_id": ObjectId(recipe_id)})
     return render_template('viewrecipe.html',
                            recipe=current_recipe,
                            title=current_recipe['name'])
@@ -87,7 +87,7 @@ def edit_recipe(recipe_id):
     If yes, the user is sent to a form where they can edit the recipe.
     If not, they are sent back to the recipe.
     '''
-    this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    this_recipe = mongo.db.recipes.find_one_or_404({"_id": ObjectId(recipe_id)})
     if request.form['edit_key'] == this_recipe['id_key']:
         return render_template('editrecipe.html',
                                recipe=this_recipe,
@@ -105,7 +105,7 @@ def submit_edit(recipe_id):
     If not, the recipe is updated.
     '''
     recipes = mongo.db.recipes
-    this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    this_recipe = mongo.db.recipes.find_one_or_404({"_id": ObjectId(recipe_id)})
     if request.form.get('delete') == 'checked':
         recipes.remove(this_recipe)
         return render_template('index.html',
@@ -146,6 +146,23 @@ def search_results():
                            results=results,
                            query=query,
                            title=f"Results for '{query}'")
+
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    '''
+    Displays custom 404 error page.
+    '''
+    return render_template('404.html', title="Page not found"), 404
+
+
+@app.errorhandler(500)
+def internal_server_error(error):
+        '''
+        Displays custom internal server error page.
+        '''
+    return render_template('500.html', title="Something went wrong"), 500
 
 
 if __name__ == '__main__':
