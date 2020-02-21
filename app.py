@@ -2,7 +2,6 @@ import os
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-import pymongo
 from os import path
 if path.exists("env.py"):
     import env
@@ -148,7 +147,6 @@ def search_results():
                            title=f"Results for '{query}'")
 
 
-
 @app.errorhandler(404)
 def page_not_found(error):
     '''
@@ -159,9 +157,9 @@ def page_not_found(error):
 
 @app.errorhandler(500)
 def internal_server_error(error):
-        '''
-        Displays custom internal server error page.
-        '''
+    '''
+    Displays custom internal server error page.
+    '''
     return render_template('500.html', title="Something went wrong"), 500
 
 
