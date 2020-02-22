@@ -14,8 +14,21 @@ Data for the app is kept in a MongoDB document-based database with two collectio
 The app incorporates the four basic CRUD (create, read, update, delete) functions, and it was created using HTML, Flask, Jinja templating and CSS.
 
 ### User stories
+1. as a user I want to be able to browse all recipes for inspiration
+2. as a user looking for a specific type of recipe, I want to be able to filter on meal type
+3. as a user looking to use up some ingredients, I want to be able to perform a search based on ingredients
+3. as a user I want an easy overview of required ingredients
+4. as a user I want to be able to print out a clean, well-structured copy of the recipe
+5. as a user I want to be able to share recipes with other users
+6. as a user who previously added a recipe, I want to be able to edit or delete it
 
 ### Wireframes
+Wireframes for this project were created for [small screens](static/wireframes/small-screens.pdf)
+and for [medium and up](static/wireframes/medium-large-screens.pdf). The decision to roll wireframes for medium and large screens into one
+was taken when it quickly became clear that they would only have minor differences. Apart from the navigation bar being collapsed on medium-sized screens,
+they are largely identical.
+
+Differences between the wireframes and the actual layout are discussed in the [Features](#features) section below.
 
 ### Database
 
