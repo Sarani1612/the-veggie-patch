@@ -26,12 +26,22 @@ The app incorporates the four basic CRUD (create, read, update, delete) function
 ### Features Left to Implement
 
 ## Technologies and Tools Used
+- HTML, CSS, JavaScript and Python were used to build the webpage
+- The [Flask framework](https://palletsprojects.com/p/flask/) and [Jinja template engine](https://palletsprojects.com/p/jinja/) were used to create and render dynamic HTML pages.
+- The [Bootstrap](https://getbootstrap.com/) framework was used to set up a responsive layout
+- [Gitpod](https://www.gitpod.io/) was used as the IDE for this Project
+- [Git](https://git-scm.com/) and [GitHub](https://github.com/) were used for version control and repository hosting
+- [Autoprefixer](https://autoprefixer.github.io/) was used to add vendor prefixes to CSS code
+- [Google Fonts](https://fonts.google.com/) provided the fonts used throughout the website (Just Another Hand and Cambay)
+- [Canva](https://www.canva.com/) was used to design the website logo and [Favicon.io](https://favicon.io/) to turn it into a favicon
+- [Heroku](https://www.heroku.com/) was used as the platform for deployment of the website
 
 ## Testing
 
 ## Deployments
 
 ## Credits
+- [This article](https://pythonise.com/series/learning-flask/flask-message-flashing) by Julian Nash was used as a guide for flash messages
 
 ### Content and Media
 - Landing page background photo is from [Pexels](https://www.pexels.com/)
