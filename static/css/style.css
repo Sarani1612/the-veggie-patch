@@ -5,7 +5,12 @@
 /* Overall settings for all pages*/
 body{
     font-family: 'Cambay', sans-serif;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     min-height: 100vh;
     text-align: center;
@@ -20,11 +25,16 @@ body{
 .navbar-brand {
     font-family: 'Just Another Hand', cursive;
     font-size: 2.5rem;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    -o-transition: transform 0.5s;
     transition: transform 0.5s;
 }
 
 .navbar-brand:hover {
-    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
 }
 
 .navbar-brand img {
@@ -40,7 +50,9 @@ body{
 /* Positions main content in all views */
 .main-content {
     margin-top: 125px;
-    flex: 1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
 }
 
 /* Landing-page */
@@ -87,7 +99,8 @@ h3 {
 .card-img {
     width: 100%;
     height: 13rem;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     margin-bottom: 0.5rem;
     border-top-left-radius: 11%;
     border-top-right-radius: 11%;
@@ -114,7 +127,8 @@ hr {
 }
 
 .recipe-img {
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     max-height: 13rem;
     border-radius: 10%;
 }
@@ -198,14 +212,17 @@ footer i {
     padding: 0 5px;
     font-size: 2rem;
     color: #fff;
+    -webkit-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
     transition: all 0.5s ease-out;
 }
 
 footer i:hover {
-    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+            transform: scale(1.5);
     color: #c1dec8;
 }
-
 
 /* Media queries */
 
