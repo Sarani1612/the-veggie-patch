@@ -42,12 +42,16 @@ Differences between the wireframes and the actual layout are discussed in the [F
 - HTML, CSS, JavaScript and Python were used to build the webpage
 - The [Flask framework](https://palletsprojects.com/p/flask/) and [Jinja template engine](https://palletsprojects.com/p/jinja/) were used to create and render dynamic HTML pages.
 - The [Bootstrap](https://getbootstrap.com/) framework was used to set up a responsive layout
+- [MongoDB Atlas](https://www.mongodb.com/) was used to store the data in a non-relational database
 - [Gitpod](https://www.gitpod.io/) was used as the IDE for this Project
 - [Git](https://git-scm.com/) and [GitHub](https://github.com/) were used for version control and repository hosting
+- [Heroku](https://www.heroku.com/) was used as the platform for deployment of the website
 - [Autoprefixer](https://autoprefixer.github.io/) was used to add vendor prefixes to CSS code
 - [Google Fonts](https://fonts.google.com/) provided the fonts used throughout the website (Just Another Hand and Cambay)
 - [Canva](https://www.canva.com/) was used to design the website logo and [Favicon.io](https://favicon.io/) to turn it into a favicon
-- [Heroku](https://www.heroku.com/) was used as the platform for deployment of the website
+- [Font Awesome](https://fontawesome.com/) provided all icons used throughout the website
+- [Balsamiq](https://balsamiq.com/) was used to create wireframes for the project
+
 
 ## Testing
 
