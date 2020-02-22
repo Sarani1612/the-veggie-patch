@@ -49,3 +49,4 @@ The app incorporates the four basic CRUD (create, read, update, delete) function
 
 ### Acknowledgments
 
+*This website is for educational purposes only. It was created as part of the Code Institute Full Stack Developer course.*
