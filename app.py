@@ -75,7 +75,7 @@ def insert_recipe():
                   'instructions': request.form.get('instructions'),
                   'id_key': request.form.get('id_key')}
     new_id = recipes.insert_one(new_recipe)
-    # flash('Your recipe has been added!', 'success')
+    flash('Your recipe has been added!', 'success')
     return redirect(url_for('view_recipe',
                             recipe_id=new_id.inserted_id))
 
@@ -109,6 +109,7 @@ def submit_edit(recipe_id):
     this_recipe = mongo.db.recipes.find_one_or_404({"_id": ObjectId(recipe_id)})
     if request.form.get('delete') == 'checked':
         recipes.delete_one(this_recipe)
+        flash('Your recipe has been deleted', 'success')
         return render_template('index.html',
                                recipes=mongo.db.recipes.find(),
                                title='The Veggie Patch')
@@ -126,6 +127,7 @@ def submit_edit(recipe_id):
                                'instructions': request.form.get('instructions'),
                                'id_key': request.form.get('id_key')
                             }})
+        flash('Your recipe has been updated', 'success')
         return redirect(url_for('view_recipe',
                                 recipe_id=this_recipe['_id']))
 

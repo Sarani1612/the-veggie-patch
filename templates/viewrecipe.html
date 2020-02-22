@@ -6,10 +6,10 @@
 <section class="main-content">
     <div class=" container">
         <h3>{{ recipe.name }}</h3>
-        {% with messages = get_flashed_messages(category_filter=['succes']) %}
-            {% if messges %}
-                {% for category, message in messages %}
-                <div class="alert alert-{{ category }}" role="alert">
+        {% with success = get_flashed_messages(category_filter=["success"]) %}
+            {% if success %}
+                {% for message in success %}
+                <div class="alert alert-success" role="alert">
                     <span>{{ message }}</span>
                 </div>
                 {% endfor %}
@@ -46,25 +46,25 @@
             <div class="col-sm-12 text-center">
                 <button class="btn btn-custom" id="modal-button">Edit recipe</button>
             </div>
-        </div>
-        <div id="edit-modal">
-            <div id="modal-content" class="text-center">
-                <form action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" method="POST">
-                    <div class="form-group modal-input">
-                        {% with messages = get_flashed_messages(category_filter=['danger']) %}
-                        {% if messges %}
-                            {% for category, message in messages %}
-                            <div class="alert alert-{{ category }}" role="alert" id="wrong_key">
-                                <span>{{ message }}</span>
-                            </div>
-                            {% endfor %}
-                        {% endif %}
-                        {% endwith %}
-                        <label for="edit_key">Please enter your key in order to edit or delete the recipe:</label>
-                        <input type="text" class="form-control" id="edit_key" name="edit_key">
-                    </div>
-                    <button type="submit" class="btn btn-custom">Edit recipe</Button>
-                </form>
+            <div id="edit-modal">
+                <div id="modal-content" class="text-center">
+                    <form action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" method="POST">
+                        <div class="form-group modal-input">
+                            {% with danger = get_flashed_messages(category_filter=["danger"]) %}
+                            {% if danger %}
+                                {% for message in danger %}
+                                <div class="alert alert-danger" role="alert" id="wrong_key">
+                                    <span>{{ message }}</span>
+                                </div>
+                                {% endfor %}
+                            {% endif %}
+                            {% endwith %}
+                            <label for="edit_key">Please enter your key in order to edit or delete the recipe:</label>
+                            <input type="text" class="form-control" id="edit_key" name="edit_key">
+                        </div>
+                        <button type="submit" class="btn btn-custom">Edit recipe</Button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
