@@ -75,7 +75,7 @@ def insert_recipe():
                   'instructions': request.form.get('instructions'),
                   'id_key': request.form.get('id_key')}
     new_id = recipes.insert_one(new_recipe)
-    flash('Your recipe has been added', 'success')
+    # flash('Your recipe has been added!', 'success')
     return redirect(url_for('view_recipe',
                             recipe_id=new_id.inserted_id))
 
@@ -93,6 +93,7 @@ def edit_recipe(recipe_id):
                                recipe=this_recipe,
                                categories=mongo.db.categories.find(),
                                title='Edit Recipe')
+    flash('Wrong key entered. Please try again.', 'danger')
     return redirect(url_for('view_recipe',
                             recipe_id=this_recipe['_id']))
 
