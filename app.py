@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from os import path
@@ -70,11 +70,12 @@ def insert_recipe():
                   'prep_time': request.form.get('prep_time'),
                   'cook_time': request.form.get('cook_time'),
                   'serves': request.form.get('serves'),
-                  'ingredients': request.form.get('ingredients').split(","),
+                  'ingredients': request.form.get('ingredients').split(";"),
                   'image_url': request.form.get('image_url'),
                   'instructions': request.form.get('instructions'),
                   'id_key': request.form.get('id_key')}
     new_id = recipes.insert_one(new_recipe)
+    flash('Your recipe has been added', 'success')
     return redirect(url_for('view_recipe',
                             recipe_id=new_id.inserted_id))
 
@@ -119,7 +120,7 @@ def submit_edit(recipe_id):
                                'prep_time': request.form.get('prep_time'),
                                'cook_time': request.form.get('cook_time'),
                                'serves': request.form.get('serves'),
-                               'ingredients': request.form.get('ingredients').split(","),
+                               'ingredients': request.form.get('ingredients').split(";"),
                                'image_url': request.form.get('image_url'),
                                'instructions': request.form.get('instructions'),
                                'id_key': request.form.get('id_key')
@@ -144,7 +145,7 @@ def search_results():
     return render_template('searchresults.html',
                            results=results,
                            query=query,
-                           title=f"Results for '{query}'")
+                           title=f'Results for "{query}"')
 
 
 @app.errorhandler(404)
