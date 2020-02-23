@@ -20,6 +20,7 @@
             <div class="col-md-6 recipe-border">
                 <img src="{{ recipe.image_url }}" class="recipe-img w-100" alt="{{ recipe.name }}">
             </div>
+            <!-- Recipe info -->
             <div class="col-md-6 recipe-info">
                 <p><strong><i class="fas fa-pizza-slice"></i> Mealtype:</strong> {{ recipe.category_name }}</p>
                 <p><strong><i class="fas fa-clock"></i> Preparation time:</strong> {{ recipe.prep_time }}</p>
@@ -29,6 +30,7 @@
         </div>
         <hr>
         <div class="row">
+            <!-- Ingredients array displayed in an unordered list -->
             <div class="col-md-6 recipe-border text-left">
                 <h4>Ingredients</h4>
                 <ul>
@@ -37,22 +39,27 @@
                     {% endfor %}
                 </ul>
             </div>
+            <!-- Recipe instructions -->
             <div class="col-md-6 text-left">
                 <h4>Instructions</h4>
                 <p>{{ recipe.instructions }}</p>
             </div>
         </div>
         <div class="row edit-btn">
+            <!-- Arrow for going back to previous page -->
             <div class="col text-left">
                 <span><i class="fas fa-arrow-left arrow-custom" onclick="history.back()"></i></span>
             </div>
+            <!-- Button for editing/deleting recipe -->
             <div class="col text-right">
                 <button class="btn btn-custom" id="modal-button">Edit recipe</button>
             </div>
+            <!-- Modal for entering key to gain access to edit form -->
             <div id="edit-modal">
                 <div id="modal-content" class="text-center">
                     <form action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" method="POST">
                         <div class="form-group modal-input">
+                            <!-- Flash message for when a wrong key is entered -->
                             {% with danger = get_flashed_messages(category_filter=["danger"]) %}
                             {% if danger %}
                                 {% for message in danger %}

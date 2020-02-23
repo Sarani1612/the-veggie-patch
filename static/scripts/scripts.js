@@ -15,7 +15,7 @@ $(document).ready(function () {
         }
     };
 
-    // Ensures modal is kept open if the wrong key was entered to avoid having to click the button
+    // Ensures modal is kept open if the wrong key was entered to avoid having to click the button again
     if ($('#wrong_key').length)
         modal.style.display = "block";
 

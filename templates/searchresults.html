@@ -2,10 +2,11 @@
 
 {% block content %}
 
+<!-- Section showing a clickable card for each recipe returned from a search -->
 <section class="main-content">
     <div class="container">
         <h3>Results for "{{ query }}"</h3>
-        {% if results == none%}
+        {% if results == none %}
         <p>No results found for "{{ query }}"</p>
         {% else %}
         <div class="row">
