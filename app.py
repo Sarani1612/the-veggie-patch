@@ -67,8 +67,8 @@ def insert_recipe():
     recipes = mongo.db.recipes
     new_recipe = {'name': request.form.get('recipe_name'),
                   'category_name': request.form.get('category_name'),
-                  'prep_time': request.form.get('prep_time'),
-                  'cook_time': request.form.get('cook_time'),
+                  'prep_time': int(request.form.get('prep_time')),
+                  'cook_time': int(request.form.get('cook_time')),
                   'serves': request.form.get('serves'),
                   'ingredients': request.form.get('ingredients').split(";"),
                   'image_url': request.form.get('image_url'),
@@ -119,8 +119,8 @@ def submit_edit(recipe_id):
                            {
                                'name': request.form.get('recipe_name'),
                                'category_name': request.form.get('category_name'),
-                               'prep_time': request.form.get('prep_time'),
-                               'cook_time': request.form.get('cook_time'),
+                               'prep_time': int(request.form.get('prep_time')),
+                               'cook_time': int(request.form.get('cook_time')),
                                'serves': request.form.get('serves'),
                                'ingredients': request.form.get('ingredients').split(";"),
                                'image_url': request.form.get('image_url'),
@@ -135,6 +135,7 @@ def submit_edit(recipe_id):
 @app.route('/search')
 def search():
     return render_template('search.html',
+                           categories=mongo.db.categories.find(),
                            title='Search Recipes')
 
 
