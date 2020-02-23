@@ -1,4 +1,4 @@
-$(document).ready(function () {
+window.onload = function(){
 
     // Opens modal when user clicks on the button to edit a recipe
     var modal = document.getElementById("edit-modal");
@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     // Removes flash messages after 5 seconds
     setTimeout(function () {
-        $('.alert').remove()}, 5000
+        $('.alert').remove();}, 5000
         )
 
-    });
+    };
