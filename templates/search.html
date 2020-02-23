@@ -5,14 +5,46 @@
 <!-- Search box where a user can search for recipes based on ingredients or recipe name -->
 <section class="main-content">
     <h3>Search Recipes</h3>
-    <div class="form-box search-box w-75 text-center">
-        <form action="{{ url_for('search_results') }}" method="POST" class="forms">
-            <label for="searchbox" class="form-label">Search based on ingredients or recipe name:</label>
-            <input type="search" class="form-control form-control-sm" id="searchbox" name="searchbox">
-            <div class="search-btn">
-                <button type="submit" class="btn btn-custom">Search</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 form-box search-box w-75 text-center">
+                <form action="{{ url_for('search_results') }}" method="POST" class="forms">
+                    <label for="searchbox" class="form-label">Search based on ingredients or recipe name:</label>
+                    <input type="search" class="form-control form-control-sm" id="searchbox" name="searchbox">
+                    <div class="search-btn">
+                        <button type="submit" class="btn btn-custom">Search</button>
+                    </div>
+                </form>
             </div>
-        </form>
+            <div class="col-12 form-box search-box w-75 text-center">
+                <p>or pick a category and how long you have to make the recipe</p>
+                <form action="{{ url_for('search_results') }}" method="POST" class="forms">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <label for="cat_filter" class="col-sm-4 col-form-label">Category:</label>
+                            <select class="form-control form-control-sm" name="cat_filter" id="cat_filter" required>
+                                <option value="" disabled selected>Choose Category</option>
+                                {% for category in categories %}
+                                <option value="{{category.category_name}}">{{category.category_name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <label for="time_filter" class="col-sm-4 col-form-label">Time:</label>
+                            <select class="form-control form-control-sm" name="time_filter" id="time_filter" required>
+                                <option value="" disabled selected>Choose</option>
+                                <option value="half_hour">up to 30 minutes</option>
+                                <option value="up_to_hour">31-60 minutes</option>
+                                <option value="over_hour">over 60 minutes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="search-btn">
+                        <button type="submit" class="btn btn-custom">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </section>
 
