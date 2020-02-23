@@ -31,6 +31,31 @@ they are largely identical.
 Differences between the wireframes and the actual layout are discussed in the [Features](#features) section below.
 
 ### Database
+The data for this project is stored in a MongoDB database with two collections:\
+**Categories collection**:
+| Field Name  | Data Type |
+| ------------|-----------|
+| _id         | ObjectId  |
+|category_name|String     |
+|category_url |String     |
+
+**Recipes collection**:
+| Field Name   | Data Type |
+|--------------|-----------|
+|_id           |ObjectId   |
+|name          |String     |
+|category_name |String     |
+|prep_time     |String     |
+|cook_time     |String     |
+|serves        |String     |
+|ingredients   |Array      |
+|image_url     |String     |
+|instructions  |String     |
+|id_key        |String     |
+
+The two collections have the category_name field in common.
+This is so that it is possible to return recipes belonging to a specific category when that category is chosen in the category view.\
+The ingredients are stored in an array in order to be able to display them on separate lines in an unordered list.
 
 ## Features
 
