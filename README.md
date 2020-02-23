@@ -45,8 +45,8 @@ The data for this project is stored in a MongoDB database with two collections:\
 |_id           |ObjectId   |
 |name          |String     |
 |category_name |String     |
-|prep_time     |String     |
-|cook_time     |String     |
+|prep_time     |Integer    |
+|cook_time     |Integer    |
 |serves        |String     |
 |ingredients   |Array      |
 |image_url     |String     |
@@ -79,6 +79,8 @@ The ingredients are stored in an array in order to be able to display them on se
 
 
 ## Testing
+JavaScript code was run through the [JSHint](https://jshint.com/) analysis tool to check for syntax errors.
+In addition, CSS was checked in the [CSS Validator](https://jigsaw.w3.org/css-validator/) and HTML in the [HTML Validator](https://validator.w3.org/).
 
 ## Deployments
 
