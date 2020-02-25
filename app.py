@@ -73,7 +73,8 @@ def insert_recipe():
                   'ingredients': request.form.get('ingredients').split(";"),
                   'image_url': request.form.get('image_url'),
                   'instructions': request.form.get('instructions'),
-                  'id_key': request.form.get('id_key')}
+                  'id_key': request.form.get('id_key'),
+                  'total_time': int(request.form.get('prep_time'))+int(request.form.get('cook_time'))}
     new_id = recipes.insert_one(new_recipe)
     flash('Your recipe has been added!', 'success')
     return redirect(url_for('view_recipe',
@@ -125,7 +126,7 @@ def submit_edit(recipe_id):
                                'ingredients': request.form.get('ingredients').split(";"),
                                'image_url': request.form.get('image_url'),
                                'instructions': request.form.get('instructions'),
-                               'id_key': request.form.get('id_key')
+                               'total_time': int(request.form.get('prep_time'))+int(request.form.get('cook_time'))
                             }})
         flash('Your recipe has been updated', 'success')
         return redirect(url_for('view_recipe',
@@ -148,8 +149,31 @@ def search_results():
     results = mongo.db.recipes.find({"$text": {"$search": query}})
     return render_template('searchresults.html',
                            results=results,
-                           query=query,
+                           heading=f'Results for "{query}"',
                            title=f'Results for "{query}"')
+
+
+@app.route('/filterresults', methods=['POST'])
+def filter_results():
+    category = request.form['cat_filter']
+    if request.form.get('time_filter') == 'half_hour':
+        results = mongo.db.recipes.find({'category_name': category, "total_time": {"$lte": 30}})
+        return render_template('searchresults.html',
+                               results=results,
+                               heading="Results",
+                               title="Results")
+    elif request.form['time_filter'] == 'up_to_hour':
+        results = mongo.db.recipes.find({'category_name': category, "total_time": {"$lte": 60, "$gte": 31}})
+        return render_template('searchresults.html',
+                               results=results,
+                               heading="Results",
+                               title="Results")
+    else:
+        results = mongo.db.recipes.find({'category_name': category, "total_time": {"$gte": 61}})
+        return render_template('searchresults.html',
+                               results=results,
+                               heading="Results",
+                               title="Results")
 
 
 @app.errorhandler(404)
