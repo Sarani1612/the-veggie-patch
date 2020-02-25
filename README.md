@@ -150,7 +150,7 @@ Follow these steps if you wish to run the project locally:
 - press enter
 - the local clone will be created
 
-These instructions and more info can be found on [this GitHub Help Page](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository).
+These instructions and more info can be found at [this GitHub Help Page](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository).
 
 ### Issues
 - **Updating a recipe**: I initially got a KeyError message when trying to update a recipe. It turned out that the following line was the issue:\
