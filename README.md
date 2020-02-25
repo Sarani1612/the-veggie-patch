@@ -81,7 +81,8 @@ The app incorporates the 4 CRUD functionalities:
   * Browsing: the landing-page displays all recipes in the database, and it is possible for users to scroll down and get inspired.
   * Filtering on Categories: by clicking on "Categories" in the navigation bar and then on a category card, it is possible for the user to only see the recipes belonging to that category (for example breakfast or desserts).
   * Searching: by clicking on "Search" in the navigation bar, the user is taken to a searchbox where they are able to search for recipes based on ingredients and names.
-  This was set up by creating an index on the name and ingredients fields in the MongoDB database.
+  This was set up by creating an index on the name and ingredients fields in the MongoDB database.\
+  The user can also search for recipes based on a category and how much time they have.
   * Viewing a recipe: when a recipe card is clicked, the user is taken to the recipe view where they can see info, ingredients and instructions for that recipe.
 - UPDATE & DELETE
   * Editing and deleting a recipe: the recipe view has an edit button the user can click if they wish to update or delete the recipe.
@@ -92,6 +93,13 @@ The app incorporates the 4 CRUD functionalities:
 - Feedback: Flash messages are displayed when a user has added, updated or deleted a recipe.
 
 ### Features Left to Implement
+- **Register and Login functionality**: it would be useful to add the option for users to register on the website.
+For now, the id_key serves to restrict who can edit and delete recipes which prevents others from randomly changing or deleting someone else's recipes,
+but it is possible for anyone to add a recipe, and a registration/login option would allow for some more control in this area.\
+It would also improve the user experience by giving them a profile overview where they would have quick access to all recipes added by themselves.
+- **Advanced categories**: The current categorization of recipes is fairly basic and only covers one meal type per recipe.
+Allowing multiple categories per recipe would make searching more efficient as some of them easily fit into more than one. It would then also be
+possible to categorize by type of cusinine (Indian, Italian etc) and dietary needs (gluten-free, low calorie etc). 
 
 ## Technologies and Tools Used
 - HTML, CSS, JavaScript and Python were used to build the webpage
