@@ -52,10 +52,13 @@ The data for this project is stored in a MongoDB database with two collections:\
 |image_url     |String     |
 |instructions  |String     |
 |id_key        |String     |
+|total_time    |Integer    | 
 
 The two collections have the category_name field in common.
 This is so that it is possible to return recipes belonging to a specific category when that category is chosen in the category view.\
-The ingredients are stored in an array in order to be able to display them on separate lines in an unordered list.
+The ingredients are stored in an array in order to be able to display them on separate lines in an unordered list.\
+total_time is the sum of prep_time and cook_time and it is not visible to the user, but is used for the filter function where users can
+look up recipes based on how long it takes to make them.
 
 ## Features
 ### Design and layout
