@@ -72,19 +72,19 @@ A playful, relaxed font, Just Another Hand, was chosen to convey a sense of fun 
 
 ### Existing Features
 The app incorporates the 4 CRUD functionalities:
-- CREATE
+- **CREATE**
   * Adding a recipe: the user has the option to add a recipe to the database by clicking on the "Add a Recipe" link in the navigation bar.
   Doing so will open a form that the user can fill out with recipe name, category, time it takes to prepare and cook, number of servings,
   ingredients, instructions and an image URL.\
   The user also has to provide a key that they need to remember in case they want to edit the recipe later.
-- READ
+- **READ**
   * Browsing: the landing-page displays all recipes in the database, and it is possible for users to scroll down and get inspired.
   * Filtering on Categories: by clicking on "Categories" in the navigation bar and then on a category card, it is possible for the user to only see the recipes belonging to that category (for example breakfast or desserts).
   * Searching: by clicking on "Search" in the navigation bar, the user is taken to a searchbox where they are able to search for recipes based on ingredients and names.
   This was set up by creating an index on the name and ingredients fields in the MongoDB database.\
   The user can also search for recipes based on a category and how much time they have.
   * Viewing a recipe: when a recipe card is clicked, the user is taken to the recipe view where they can see info, ingredients and instructions for that recipe.
-- UPDATE & DELETE
+- **UPDATE & DELETE**
   * Editing and deleting a recipe: the recipe view has an edit button the user can click if they wish to update or delete the recipe.
   In order to restrict access to these functions, the edit form will only open once the correct key has been entered (the key provided when the recipe was first added).
   This ensures that only the person who added the recipe is able to change or delete it.\
@@ -121,6 +121,23 @@ JavaScript code was run through the [JSHint](https://jshint.com/) analysis tool 
 In addition, CSS was checked in the [CSS Validator](https://jigsaw.w3.org/css-validator/) and HTML in the [HTML Validator](https://validator.w3.org/).
 
 ## Deployments
+
+### Issues
+- **Updating a recipe**: I initially got a KeyError message when trying to update a recipe. It turned out that the following line was the issue:\
+`if request.form['delete'] == 'checked':`\
+Given that the 'delete' checkbox was not checked, trying to access the 'delete' key would of course return an error.
+Solved by changing the code to `if request.form.get('delete') == 'checked':` as this does not throw an error when the key does not exist.
+- **Filtering based on time**: I ran into an issue while setting up the filtering function. I wanted to be able to filter recipes according
+to how much time they took to make (prep_time + cook_time). I was looking for a way to do something like
+`results = mongo.db.recipes.find({'category_name': category, "prep_time"+"cook_time": {"$lte": 30}})`\
+Obviously, it did not work with the plus symbol and I could not find another way to do it including with "$add" and "$sum".\
+I solved it by batch updating all records in the database to include a new total_time key whose value was the sum of prep_time and cook_time.
+I then added the same key-value pair to the insert_recipe and update_recipe functions so that all recipes now have the total_time field.\
+The filter function now works with `results = mongo.db.recipes.find({'category_name': category, "total_time": {"$lte": 30}})`.
+- **Flash messages not disappearing**: I have set a JavaScript setTimeout() function targeting elements with the ‘alert’ classname
+to remove the flash messages after 5 seconds. A person who kindly tested my website said that the messages did not disappear,
+while for me, there is only an issue with the flash message for successful deletion of a recipe.
+I have not been able to find the cause yet and this bug has therefore been left unresolved for now.
 
 ## Credits
 - [This article](https://pythonise.com/series/learning-flask/flask-message-flashing) by Julian Nash was used as a guide for flash messages
