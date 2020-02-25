@@ -63,6 +63,7 @@ def insert_recipe():
     '''
     Gets data from the form the user has filled out and inserts the recipe in the database.
     Returns a view of the new recipe.
+    total_time is stored to be used in the filtering function further below.
     '''
     recipes = mongo.db.recipes
     new_recipe = {'name': request.form.get('recipe_name'),
@@ -155,6 +156,9 @@ def search_results():
 
 @app.route('/filterresults', methods=['POST'])
 def filter_results():
+    '''
+    Filters recipes based on the category and amount of time available picked by the user.
+    '''
     category = request.form['cat_filter']
     if request.form.get('time_filter') == 'half_hour':
         results = mongo.db.recipes.find({'category_name': category, "total_time": {"$lte": 30}})
