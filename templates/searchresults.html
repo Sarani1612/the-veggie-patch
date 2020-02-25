@@ -5,9 +5,9 @@
 <!-- Section showing a clickable card for each recipe returned from a search -->
 <section class="main-content">
     <div class="container">
-        <h3>Results for "{{ query }}"</h3>
-        {% if results == none %}
-        <p>No results found for "{{ query }}"</p>
+        <h3>{{ heading }}</h3>
+        {% if results.count() == 0 %}
+        <p>No results found</p>
         {% else %}
         <div class="row">
             {% for res in results %}
