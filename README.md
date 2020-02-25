@@ -131,6 +131,23 @@ possible to categorize by type of cusinine (Indian, Italian etc) and dietary nee
 JavaScript code was run through the [JSHint](https://jshint.com/) analysis tool to check for syntax errors.
 In addition, CSS was checked in the [CSS Validator](https://jigsaw.w3.org/css-validator/) and HTML in the [HTML Validator](https://validator.w3.org/).
 
+### Issues
+- **Updating a recipe**: I initially got a KeyError message when trying to update a recipe. It turned out that the following line was the issue:\
+`if request.form['delete'] == 'checked':`\
+Given that the 'delete' checkbox was not checked, trying to access the 'delete' key would of course return an error.
+Solved by changing the code to `if request.form.get('delete') == 'checked':` as this does not throw an error when the key does not exist.
+- **Filtering based on time**: I ran into an issue while setting up the filtering function. I wanted to be able to filter recipes according
+to how much time they took to make (prep_time + cook_time). I was looking for a way to do something like
+`results = mongo.db.recipes.find({'category_name': category, "prep_time"+"cook_time": {"$lte": 30}})`\
+Obviously, it did not work with the plus symbol and I could not find another way to do it including with "$add" and "$sum".\
+I solved it by batch updating all records in the database to include a new total_time key whose value was the sum of prep_time and cook_time.
+I then added the same key-value pair to the insert_recipe and update_recipe functions so that all recipes now have the total_time field.\
+The filter function now works with `results = mongo.db.recipes.find({'category_name': category, "total_time": {"$lte": 30}})`.
+- **Flash messages not disappearing**: I have set a JavaScript setTimeout() function targeting elements with the ‘alert’ classname
+to remove the flash messages after 5 seconds. A person who kindly tested my website said that the messages did not disappear,
+while for me, there is only an issue with the flash message for successful deletion of a recipe.
+I have not been able to find the cause yet and this bug has therefore been left unresolved for now.
+
 ## Deployment
 This project was developed in Gitpod and pushed regularly to the GitHub repository via git commands in the terminal.\
 The website was deployed on Heroku via the following steps:
@@ -151,23 +168,6 @@ Follow these steps if you wish to run the project locally:
 - the local clone will be created
 
 These instructions and more info can be found at [this GitHub Help Page](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository).
-
-### Issues
-- **Updating a recipe**: I initially got a KeyError message when trying to update a recipe. It turned out that the following line was the issue:\
-`if request.form['delete'] == 'checked':`\
-Given that the 'delete' checkbox was not checked, trying to access the 'delete' key would of course return an error.
-Solved by changing the code to `if request.form.get('delete') == 'checked':` as this does not throw an error when the key does not exist.
-- **Filtering based on time**: I ran into an issue while setting up the filtering function. I wanted to be able to filter recipes according
-to how much time they took to make (prep_time + cook_time). I was looking for a way to do something like
-`results = mongo.db.recipes.find({'category_name': category, "prep_time"+"cook_time": {"$lte": 30}})`\
-Obviously, it did not work with the plus symbol and I could not find another way to do it including with "$add" and "$sum".\
-I solved it by batch updating all records in the database to include a new total_time key whose value was the sum of prep_time and cook_time.
-I then added the same key-value pair to the insert_recipe and update_recipe functions so that all recipes now have the total_time field.\
-The filter function now works with `results = mongo.db.recipes.find({'category_name': category, "total_time": {"$lte": 30}})`.
-- **Flash messages not disappearing**: I have set a JavaScript setTimeout() function targeting elements with the ‘alert’ classname
-to remove the flash messages after 5 seconds. A person who kindly tested my website said that the messages did not disappear,
-while for me, there is only an issue with the flash message for successful deletion of a recipe.
-I have not been able to find the cause yet and this bug has therefore been left unresolved for now.
 
 ## Credits
 - [This article](https://pythonise.com/series/learning-flask/flask-message-flashing) by Julian Nash was used as a guide for flash messages
