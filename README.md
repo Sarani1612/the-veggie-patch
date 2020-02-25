@@ -28,7 +28,7 @@ and for [medium and up](static/wireframes/medium-large-screens.pdf). The decisio
 was taken when it quickly became clear that they would only have minor differences. Apart from the navigation bar being collapsed on medium-sized screens,
 they are largely identical.
 
-Differences between the wireframes and the actual layout are discussed in the [Features](#features) section below.
+Differences between the wireframes and the actual layout are discussed in the [Features](#wireframe-differences) section below.
 
 ### Database
 The data for this project is stored in a MongoDB database with two collections:\
@@ -69,6 +69,17 @@ For the header, footer and borders a dark green (#026318) was used as green is a
 Where text appears on a coloured background, the color is set to white to ensure it is easy to read.\
 The logo was designed with [Canva](https://www.canva.com/) and consists of an image of tomatoes next to the name of the website in white on the green background.
 A playful, relaxed font, Just Another Hand, was chosen to convey a sense of fun and informality. For all other text on the website, the font Cambay is used as it is a simple, sans-serif font which is easier on the eyes when reading on a screen.
+
+#### Wireframe differences
+
+- **Login/registration pages**: I initially planned on having login and registration pages, but during the first session with my mentor,
+he pointed out that it was not a requirement for this project, and when I said I was concerned about letting everyone have access to editing
+and deleting, he suggested the current setup with the secret key. The website does therefore not have login and registration pages as in the wireframes.
+- **Recipe cards**: my wireframes for small screens show the recipe cards in rows with three in each row and for medium screens and up,
+they are in rows of four. However, when I started building the site it was clear early on that the cards would be too small and too
+compact-looking. I therefore decided to only have one card per row on small screens and three on medium-large.
+- **Recipe view on small screens**: I changed the original layout from showing the picture next to the recipe info (prep time, servings etc)
+to having the picture on top and the info underneath. As with the recipe cards, it just looked too compact and the picture was too narrow in the original design.
 
 ### Existing Features
 The app incorporates the 4 CRUD functionalities:
