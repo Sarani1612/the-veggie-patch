@@ -131,7 +131,26 @@ possible to categorize by type of cusinine (Indian, Italian etc) and dietary nee
 JavaScript code was run through the [JSHint](https://jshint.com/) analysis tool to check for syntax errors.
 In addition, CSS was checked in the [CSS Validator](https://jigsaw.w3.org/css-validator/) and HTML in the [HTML Validator](https://validator.w3.org/).
 
-## Deployments
+## Deployment
+This project was developed in Gitpod and pushed regularly to the GitHub repository via git commands in the terminal.\
+The website was deployed on Heroku via the following steps:
+1. I created an app on Heroku and connected to it on Gitpod in the terminal
+2. I set the necessary config vars in the Heroku Settings tab (secret key, MongoDB name, MongoDB URI, IP and PORT)
+3. I regularly pushed code from Gitpod to Heroku via the command line (later I set up automatic deploys from the master branch
+in the Heroku Deploy tab)
+4. The app was then available on [https://the-veggie-patch.herokuapp.com/](https://the-veggie-patch.herokuapp.com/).
+
+### Cloning and running the project locally
+Follow these steps if you wish to run the project locally:
+- go to the [repository page](https://github.com/Sarani1612/the-veggie-patch) on GitHub
+- click the "clone or download" button on the right-hand side
+- copy the URL that shows up
+- in Terminal, change the current working directory to the location where you want the cloned directory to be made
+- type 'git clone' and paste the URL from step 2
+- press enter
+- the local clone will be created
+
+These instructions and more info can be found on [this GitHub Help Page](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository).
 
 ### Issues
 - **Updating a recipe**: I initially got a KeyError message when trying to update a recipe. It turned out that the following line was the issue:\
