@@ -171,6 +171,8 @@ These instructions and more info can be found at [this GitHub Help Page](https:/
 
 ## Credits
 - [This article](https://pythonise.com/series/learning-flask/flask-message-flashing) by Julian Nash was used as a guide for flash messages
+- I adapted the code for pagination in [this repository](https://github.com/MiroslavSvec/DCD_lead/tree/pagination) by Miroslav Svec
+(link found in Code Institute Slack channel).
 
 ### Content and Media
 - Landing page background photo is from [Pexels](https://www.pexels.com/)
