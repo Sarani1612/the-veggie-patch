@@ -81,8 +81,8 @@ def view_category(category_name):
                            limit=limit,
                            offset=offset,
                            max_number=max_number,
-                           next_url=f"/index?limit={str(limit)}&offset={str(offset + limit)}",
-                           prev_url=f"/index?limit={str(limit)}&offset={str(offset - limit)}")
+                           next_url="/categories/" + category_name + f"?limit={str(limit)}&offset={str(offset + limit)}",
+                           prev_url="/categories/" + category_name + f"?limit={str(limit)}&offset={str(offset - limit)}")
 
 
 @app.route('/add_recipe')
@@ -197,8 +197,8 @@ def search_results():
                            limit=limit,
                            offset=offset,
                            max_number=max_number,
-                           next_url=f"/index?limit={str(limit)}&offset={str(offset + limit)}",
-                           prev_url=f"/index?limit={str(limit)}&offset={str(offset - limit)}")
+                           next_url=f"/searchresults?limit={str(limit)}&offset={str(offset + limit)}",
+                           prev_url=f"/searchresults?limit={str(limit)}&offset={str(offset - limit)}")
 
 
 @app.route('/filterresults', methods=['POST'])
@@ -209,6 +209,8 @@ def filter_results():
     limit = 9
     offset = int(request.args.get('offset', 0))
     category = request.form['cat_filter']
+    next_url = f"/filterresults?limit={str(limit)}&offset={str(offset + limit)}"
+    prev_url = f"/filterresults?limit={str(limit)}&offset={str(offset - limit)}"
 
     if request.form.get('time_filter') == 'half_hour':
         results = mongo.db.recipes.find({'category_name': category, "total_time": {"$lte": 30}}).limit(limit).skip(offset)
@@ -220,8 +222,8 @@ def filter_results():
                                limit=limit,
                                offset=offset,
                                max_number=max_number,
-                               next_url=f"/index?limit={str(limit)}&offset={str(offset + limit)}",
-                               prev_url=f"/index?limit={str(limit)}&offset={str(offset - limit)}")
+                               next_url=next_url,
+                               prev_url=prev_url)
     elif request.form['time_filter'] == 'up_to_hour':
         results = mongo.db.recipes.find({'category_name': category, "total_time": {"$lte": 60, "$gte": 31}}).limit(limit).skip(offset)
         max_number = mongo.db.recipes.find({'category_name': category, "total_time": {"$lte": 60, "$gte": 31}}).count()
@@ -232,8 +234,8 @@ def filter_results():
                                limit=limit,
                                offset=offset,
                                max_number=max_number,
-                               next_url=f"/index?limit={str(limit)}&offset={str(offset + limit)}",
-                               prev_url=f"/index?limit={str(limit)}&offset={str(offset - limit)}")
+                               next_url=next_url,
+                               prev_url=prev_url)
     else:
         results = mongo.db.recipes.find({'category_name': category, "total_time": {"$gte": 61}}).limit(limit).skip(offset)
         max_number = mongo.db.recipes.find({'category_name': category, "total_time": {"$gte": 61}}).count()
@@ -244,8 +246,8 @@ def filter_results():
                                limit=limit,
                                offset=offset,
                                max_number=max_number,
-                               next_url=f"/index?limit={str(limit)}&offset={str(offset + limit)}",
-                               prev_url=f"/index?limit={str(limit)}&offset={str(offset - limit)}")
+                               next_url=next_url,
+                               prev_url=prev_url)
 
 
 @app.errorhandler(404)
