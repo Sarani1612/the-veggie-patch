@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import pymongo
 from os import path
 if path.exists("env.py"):
     import env
@@ -19,12 +20,27 @@ mongo = PyMongo(app)
 @app.route('/index')
 def index():
     '''
-    Groups all recipes by category and renders them on the landing page view.
+    Renders recipes sorted (and grouped) by categories in groups of 9 per page.
     '''
-    recipes = mongo.db.recipes.find().sort('category_name', 1)
-    return render_template('index.html',
+    limit = 9
+    offset = int(request.args.get('offset', 0))
+    max_number = mongo.db.recipes.find().count()
+    recipes = mongo.db.recipes.find().sort('category_name', pymongo.ASCENDING).limit(limit).skip(offset)
+
+    if offset < 0:
+        offset = 0
+ 
+    if offset > max_number:
+        offset = max_number
+
+    return render_template("index.html",
                            recipes=recipes,
-                           title='The Veggie Patch')
+                           title="The Veggie Patch",
+                           limit=limit,
+                           offset=offset,
+                           max_number=max_number,
+                           next_url=f"/index?limit={str(limit)}&offset={str(offset + limit)}",
+                           prev_url=f"/index?limit={str(limit)}&offset={str(offset - limit)}")
 
 
 @app.route('/view_recipe/<recipe_id>')
