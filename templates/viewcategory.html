@@ -3,20 +3,41 @@
 {% block content %}
 
 <!-- Section showing a clickable card for all recipes in a specific category -->
- <section class="main-content">
-    <div class="container">
-        <h3>{{ category_heading }}</h3>
-        <div class="row">
-            {% for recipe in recipes %}
-            <div class="col-md-4 mb-2">
-                <div class="align-items-center justify-content-center h-100 w-100 mx-auto card-div">
-                    <img src="{{ recipe.image_url }}" class="card-img" alt="{{ recipe.name }}">
-                    <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="stretched-link">{{ recipe.name }}</a>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
+<section class="main-content">
+	<div class="container">
+		<h3>{{ category_heading }}</h3>
+		<div class="row">
+			{% for recipe in recipes %}
+			<div class="col-md-4 mb-2">
+				<div class="align-items-center justify-content-center h-100 w-100 mx-auto card-div">
+					<img src="{{ recipe.image_url }}" class="card-img" alt="{{ recipe.name }}">
+					<a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}"
+						class="stretched-link">{{ recipe.name }}</a>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<!-- Back/Next arrows will only show if there are more recipes than can fit on a page -->
+	{% if max_number > limit %}
+	<div class="container">
+		<div class="row">
+			<!-- Previous button will not be displayed on the first page -->
+			<div class="col-6 text-left">
+				{% if offset > 0 %}
+				<a href="{{ prev_url }}"><i class="fas fa-arrow-left arrow-custom"></i></a>
+				{% endif %}
+			</div>
+			<!-- Next button will not be displayed if there are no more recipes -->
+			<div class="col-6 text-right">
+				{% if offset + limit < max_number %}
+				<a href="{{ next_url }}"><i class="fas fa-arrow-right arrow-custom"></i></a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	{% endif %}
 </section>
 
 {% endblock %}

@@ -36,21 +36,22 @@
         </div>
     </div>
 
+    <!-- Back/Next arrows will only show if there are more recipes than can fit on a page -->
 	{% if max_number > limit %}
 	<div class="container">
 		<div class="row">
 			<!-- Previous button will not be displayed on the first page -->
-            <div class="col-6 text-left">
-                {% if offset > 0 %}
-			    <a href="{{ prev_url }}"><i class="fas fa-arrow-left arrow-custom"></i></a>
-                {% endif %}
-            </div>
+			<div class="col-6 text-left">
+				{% if offset > 0 %}
+				<a href="{{ prev_url }}"><i class="fas fa-arrow-left arrow-custom"></i></a>
+				{% endif %}
+			</div>
 			<!-- Next button will not be displayed if there are no more recipes -->
-            <div class="col-6 text-right">
-                {% if offset + limit < max_number %}
-		    	<a href="{{ next_url }}"><i class="fas fa-arrow-right arrow-custom"></i></a>
-                {% endif %}
-            </div>
+			<div class="col-6 text-right">
+				{% if offset + limit < max_number %}
+				<a href="{{ next_url }}"><i class="fas fa-arrow-right arrow-custom"></i></a>
+				{% endif %}
+			</div>
 		</div>
 	</div>
 	{% endif %}
