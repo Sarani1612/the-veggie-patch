@@ -3,10 +3,10 @@
 {% block content %}
 
 <section class="main-content">
-	<h3>Edit your recipe here</h3>
+    <h3>Edit your recipe here</h3>
     <!-- Form for editing a recipe. Input fields autopopulated from MongoDB database. -->
     <div class="form-box">
-        <form  action="{{ url_for('submit_edit', recipe_id=recipe._id) }}" method="POST" class="forms">
+        <form action="{{ url_for('submit_edit', recipe_id=recipe._id) }}" method="POST" class="forms">
             <div class="form-group row">
                 <label for="recipe_name" class="col-sm-4 col-form-label">Recipe name:</label>
                 <div class="col-sm-8">
@@ -65,20 +65,20 @@
                 <div class="col-sm-8">
                     <input type="text" class="form-control form-control-sm" name="id_key" id="id_key" value="{{ recipe.id_key }}">
                     <smalln id="id-key-help" class="form-text text-muted">
-                    You will need this key if you want to edit or delete the recipe later.
-                    </small>
+                        You will need this key if you want to edit or delete the recipe later.
+                        </small>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-4">Delete?</div>
                 <div class="col-sm-8">
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input"  value="checked" name="delete" id="delete">
+                        <input type="checkbox" class="form-check-input" value="checked" name="delete" id="delete">
                         <label for="delete" class="form-check-label">Check to delete the recipe completely. Cannot be undone.</label>
                     </div>
                 </div>
             </div>
-            <!-- Arrow for going back to the recipe -->
+            <!-- Arrow for going back to the recipe view -->
             <div class="form-group row">
                 <div class="col text-left">
                     <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}"><i class="fas fa-arrow-left arrow-custom"></i></a>
@@ -90,4 +90,5 @@
         </form>
     </div>
 </section>
+
 {% endblock %}

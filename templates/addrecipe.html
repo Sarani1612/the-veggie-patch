@@ -3,10 +3,10 @@
 {% block content %}
 
 <section class="main-content">
-	<h3>Add a recipe</h3>
+    <h3>Add a recipe</h3>
     <!-- Form for adding a recipe to the database -->
     <div class="form-box">
-        <form  action="{{ url_for('insert_recipe') }}" method="POST" class="forms">
+        <form action="{{ url_for('insert_recipe') }}" method="POST" class="forms">
             <div class="form-group row">
                 <label for="recipe_name" class="col-sm-4 col-form-label">Recipe name:</label>
                 <div class="col-sm-8">

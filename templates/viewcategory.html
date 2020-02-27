@@ -11,8 +11,7 @@
 			<div class="col-md-4 mb-2">
 				<div class="align-items-center justify-content-center h-100 w-100 mx-auto card-div">
 					<img src="{{ recipe.image_url }}" class="card-img" alt="{{ recipe.name }}">
-					<a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}"
-						class="stretched-link">{{ recipe.name }}</a>
+					<a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="stretched-link">{{ recipe.name }}</a>
 				</div>
 			</div>
 			{% endfor %}
