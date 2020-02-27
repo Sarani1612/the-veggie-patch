@@ -3,24 +3,24 @@
 ## Table of Contents
 1. [The Veggie Patch](#the-veggie-patch)
 2. [UX](#ux)
-  1. [User Stories](#user-stories)
-  2. [Wireframes](#wireframes)
-  3. [Database](#database)
+    1. [User Stories](#user-stories)
+    2. [Wireframes](#wireframes)
+    3. [Database](#database)
 3. [Features](#features)
-  1. [Design and Layout](#design-and-layout)
-  2. [Wireframe Differences](#wireframe-differences)
-  3. [Existing Features](#existing-features)
-  4. [Features Left to Implement](#features-left-to-implement) 
+    1. [Design and Layout](#design-and-layout)
+    2. [Wireframe Differences](#wireframe-differences)
+    3. [Existing Features](#existing-features)
+    4. [Features Left to Implement](#features-left-to-implement) 
 4. [Technologies and Tools Used](#techonolies-and-tools-used)
 5. [Testing](#testing)
-  1. [Testing User Stories](#testing-user-stories)
-  2. [Testing CRUD functionality](#testing-crud-functionality)
-  3. [Additional Testing](#additional-testing)
-  4. [Issues](#issues)
+    1. [Testing User Stories](#testing-user-stories)
+    2. [Testing CRUD functionality](#testing-crud-functionality)
+    3. [Additional Testing](#additional-testing)
+    4. [Issues](#issues)
 6. [Deployment](#deployment)
-  1. [Cloning and running the project locally](#cloning-and-running-the-project-locally)
+    1. [Cloning and running the project locally](#cloning-and-running-the-project-locally)
 7. [Credits](#credits)
-  1. [Content and Media](#content-and-media)
+    1. [Content and Media](#content-and-media)
 
 # The Veggie Patch
 
@@ -106,24 +106,24 @@ to having the picture on top and the info underneath. As with the recipe cards, 
 ### Existing Features
 The app incorporates the 4 CRUD functionalities:
 - **CREATE**
-  * Adding a recipe: the user has the option to add a recipe to the database by clicking on the "Add a Recipe" link in the navigation bar.
+    * Adding a recipe: the user has the option to add a recipe to the database by clicking on the "Add a Recipe" link in the navigation bar.
   Doing so will open a form that the user can fill out with recipe name, category, time it takes to prepare and cook, number of servings,
   ingredients, instructions and an image URL.\
   The user also has to provide a key that they need to remember in case they want to edit the recipe later.
 - **READ**
-  * Browsing: the landing-page displays all recipes in the database, and it is possible for users to scroll down and get inspired.
-  * Filtering on Categories: by clicking on "Categories" in the navigation bar and then on a category card, it is possible for the user to only see the recipes belonging to that category (for example breakfast or desserts).
-  * Searching: by clicking on "Search" in the navigation bar, the user is taken to a searchbox where they are able to search for recipes based on ingredients and names.
+    * Browsing: the landing-page displays all recipes in the database, and it is possible for users to scroll down and get inspired.
+    * Filtering on Categories: by clicking on "Categories" in the navigation bar and then on a category card, it is possible for the user to only see the recipes belonging to that category (for example breakfast or desserts).
+    * Searching: by clicking on "Search" in the navigation bar, the user is taken to a searchbox where they are able to search for recipes based on ingredients and names.
   This was set up by creating an index on the name and ingredients fields in the MongoDB database.\
   The user can also search for recipes based on a category and how much time they have.
-  * Viewing a recipe: when a recipe card is clicked, the user is taken to the recipe view where they can see info, ingredients and instructions for that recipe.
+    * Viewing a recipe: when a recipe card is clicked, the user is taken to the recipe view where they can see info, ingredients and instructions for that recipe.
 - **UPDATE & DELETE**
-  * Editing and deleting a recipe: the recipe view has an edit button the user can click if they wish to update or delete the recipe.
+    * Editing and deleting a recipe: the recipe view has an edit button the user can click if they wish to update or delete the recipe.
   In order to restrict access to these functions, the edit form will only open once the correct key has been entered (the key provided when the recipe was first added).
   This ensures that only the person who added the recipe is able to change or delete it.\
   The edit form autopopulates with the data from the MongoDB database and there is a checkbox that needs to be checked in order to delete the recipe completely.
   A checkbox is less likely to be clicked by accident than a button which is why this design was chosen.
-- Feedback: Flash messages are displayed when a user has added, updated or deleted a recipe.
+- **Feedback**: Flash messages are displayed when a user has added, updated or deleted a recipe.
 
 ### Features Left to Implement
 - **Register and Login functionality**: it would be useful to add the option for users to register on the website.
@@ -159,37 +159,38 @@ including medium size which I did not otherwise have access to.
 
 ### Testing User Stories
 1. as a user I want to be able to browse all recipes for inspiration:
-  * this is possible from the moment the user lands on the website as there is a "browse all recipes" section on the landing-page.
+    * this is possible from the moment the user lands on the website as there is a "browse all recipes" section on the landing-page.
   The recipes are grouped by category name so that all recipes belonging to the same category are shown together for a better overview.
   The recipes are shown 9 at a time and there are navigation arrows at the bottom to navigate between pages.
 2. as a user looking for a specific type of recipe, I want to be able to filter on meal type:
-  * users can do this by clicking on "Categories" in the navigation bar. They will then get an overview of the available categories, and clicking on
+    * users can do this by clicking on "Categories" in the navigation bar. They will then get an overview of the available categories, and clicking on
   one of these will take them to a page showing only recipes belonging to that category.
 3. as a user looking to use up some ingredients, I want to be able to perform a search based on ingredients:
-  * by clicking on the "Search" item in the navigation bar, the user is taken to a searchbox where they can enter ingredients or recipe names
+    * by clicking on the "Search" item in the navigation bar, the user is taken to a searchbox where they can enter ingredients or recipe names
   to get relevant recipes.
 4. as a user with time constraints, I want to be able to filter recipes based on time:
-  * the Search page also has a filtering function, where a user can pick a category and how much time is available to them (up to 30 minutes,
+    * the Search page also has a filtering function, where a user can pick a category and how much time is available to them (up to 30 minutes,
   between 31 and 60 minutes or over 60 minutes). They will then be shown recipes from the chosen category where preparation time
   and cooking time together fall within the chosen time parameter.
 3. as a user I want an easy overview of required ingredients so that I can decide if the recipe is for me:
-  * clicking on a recipe will take the user to the recipe view where they will find an overview of the ingredients. The ingredients appear in
+    * clicking on a recipe will take the user to the recipe view where they will find an overview of the ingredients. The ingredients appear in
   a bulleted list for clarity and readability.
 5. as a user I want to be able to share recipes with other users:
-  * This can easily be done by clicking "Add a Recipe" in the menu bar and filling out the form that appears. The input fields are labelled
+    * This can easily be done by clicking "Add a Recipe" in the menu bar and filling out the form that appears. The input fields are labelled
   and instructions are provided where needed to make the process as intuitive and easy to follow as possible.
 6. as a user who previously added a recipe, I want to be able to edit or delete it:
-  * the user can do this by clicking the "Edit recipe" button in the recipe view. Before they can edit the recipe, they will have to enter the key
+    * the user can do this by clicking the "Edit recipe" button in the recipe view. Before they can edit the recipe, they will have to enter the key
   they provided when they added it. If the key is correct, they will be taken to a form very similar to the "add a recipe" form which is auto-populated with data from the database.
   If the user wishes to delete the recipe completely, they can do so by checking the "delete" checkbox. There is a disclaimer to warn the user
   that it cannot be undone.
 
 ### Testing CRUD Functionality
 - **CREATE**:
-  * This function was tested by myself and friends and family on both smartphones and laptops and it worked as intended. No bugs found. 
+    * This function was tested by myself and friends and family on both smartphones and laptops and it worked as intended. No bugs found. 
 - **READ**:
-  * Again tested by myself and others on different devices. Recipes show up as intended, and no bugs found with rendering data from the database.
-- **UPDATE & DELETE**: initially encountered the KeyError issue described below, but this has been rectified, and there are no longer any issues
+    * Again tested by myself and others on different devices. Recipes show up as intended, and no bugs found with rendering data from the database.
+- **UPDATE & DELETE**:
+    * initially encountered the KeyError issue described below, but this has been rectified, and there are no longer any issues
 when updating or deleting a recipe.
 
 ### Additional Testing
