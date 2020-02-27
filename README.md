@@ -1,11 +1,33 @@
 ![Logo](static/images/full-logo.png)
 
+## Table of Contents
+1. [The Veggie Patch](#the-veggie-patch)
+2. [UX](#ux)
+  1. [User Stories](#user-stories)
+  2. [Wireframes](#wireframes)
+  3. [Database](#database)
+3. [Features](#features)
+  1. [Design and Layout](#design-and-layout)
+  2. [Wireframe Differences](#wireframe-differences)
+  3. [Existing Features](#existing-features)
+  4. [Features Left to Implement](#features-left-to-implement) 
+4. [Technologies and Tools Used](#techonolies-and-tools-used)
+5. [Testing](#testing)
+  1. [Testing User Stories](#testing-user-stories)
+  2. [Testing CRUD functionality](#testing-crud-functionality)
+  3. [Additional Testing](#additional-testing)
+  4. [Issues](#issues)
+6. [Deployment](#deployment)
+  1. [Cloning and running the project locally](#cloning-and-running-the-project-locally)
+7. [Credits](#credits)
+  1. [Content and Media](#content-and-media)
+
 # The Veggie Patch
 
 As my Milestone Project 3 for the Code Institute Full Stack Web Development course,
 I have built an application where people are able to find and share vegetarian recipes with each other.
 
-The application can be found at ....
+The application can be found at [The Veggie Patch](https://the-veggie-patch.herokuapp.com/)
 
 ## UX
 The application is meant to be a platform for people who are interested in vegetarian cooking,
@@ -13,7 +35,7 @@ to get inspired and find and share recipes with each other.\
 Data for the app is kept in a MongoDB document-based database with two collections.\
 The app incorporates the four basic CRUD (create, read, update, delete) functions, and it was created using HTML, Flask, Jinja templating and CSS.
 
-### User stories
+### User Stories
 1. as a user I want to be able to browse all recipes for inspiration
 2. as a user looking for a specific type of recipe, I want to be able to filter on meal type
 3. as a user looking to use up some ingredients, I want to be able to perform a search based on ingredients
@@ -61,7 +83,7 @@ total_time is the sum of prep_time and cook_time and it is not visible to the us
 look up recipes based on how long it takes to make them.
 
 ## Features
-### Design and layout
+### Design and Layout
 This is a multi-page app with a clean, user-friendly design. All pages make use of the same colour scheme and fonts and all have the same fixed-top navbar and footer.
 Where the same elements are rendered on multiple pages at different times (for example cards showing an image and a name for a recipe),
 the look is always identical to ensure smooth transitions and ecognisability.\
@@ -70,7 +92,7 @@ Where text appears on a coloured background, the color is set to white to ensure
 The logo was designed with [Canva](https://www.canva.com/) and consists of an image of tomatoes next to the name of the website in white on the green background.
 A playful, relaxed font, Just Another Hand, was chosen to convey a sense of fun and informality. For all other text on the website, the font Cambay is used as it is a simple, sans-serif font which is easier on the eyes when reading on a screen.
 
-#### Wireframe differences
+#### Wireframe Differences
 
 - **Login/registration pages**: I initially planned on having login and registration pages, but during the first session with my mentor,
 he pointed out that it was not a requirement for this project, and when I said I was concerned about letting everyone have access to editing
@@ -135,7 +157,7 @@ All the following testing has been carried out on smaller screens running both i
 running both macOS and Windows in multiple browsers. In addition, Chrome's developer tools were used extensively to test on all screen sizes
 including medium size which I did not otherwise have access to.
 
-### Testing user stories
+### Testing User Stories
 1. as a user I want to be able to browse all recipes for inspiration:
   * this is possible from the moment the user lands on the website as there is a "browse all recipes" section on the landing-page.
   The recipes are grouped by category name so that all recipes belonging to the same category are shown together for a better overview.
@@ -162,7 +184,7 @@ including medium size which I did not otherwise have access to.
   If the user wishes to delete the recipe completely, they can do so by checking the "delete" checkbox. There is a disclaimer to warn the user
   that it cannot be undone.
 
-### Testing CRUD functionality
+### Testing CRUD Functionality
 - **CREATE**:
   * This function was tested by myself and friends and family on both smartphones and laptops and it worked as intended. No bugs found. 
 - **READ**:
@@ -170,7 +192,7 @@ including medium size which I did not otherwise have access to.
 - **UPDATE & DELETE**: initially encountered the KeyError issue described below, but this has been rectified, and there are no longer any issues
 when updating or deleting a recipe.
 
-### Other testing
+### Additional Testing
 In addition to the above testing of the website functionality, testing of all links and buttons was carried out to make sure they worked and
 linked to the right pages/websites.\
 The website's responsiveness was thoroughly tested on various devices and using Chrome Developer Tools to ensure that it looked and worked as intended
@@ -226,7 +248,5 @@ These instructions and more info can be found at [this GitHub Help Page](https:/
 ### Content and Media
 - Landing page background photo is from [Pexels](https://www.pexels.com/)
 - Recipes including photos are from the [BBC goodfood](https://www.bbcgoodfood.com/) website
-
-### Acknowledgments
 
 *This website is for educational purposes only. It was created as part of the Code Institute Full Stack Developer course.*
