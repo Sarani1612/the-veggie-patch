@@ -17,8 +17,8 @@ The app incorporates the four basic CRUD (create, read, update, delete) function
 1. as a user I want to be able to browse all recipes for inspiration
 2. as a user looking for a specific type of recipe, I want to be able to filter on meal type
 3. as a user looking to use up some ingredients, I want to be able to perform a search based on ingredients
+4. as a user with time constraints, I want to be able to filter recipes based on time
 3. as a user I want an easy overview of required ingredients
-4. as a user I want to be able to print out a clean, well-structured copy of the recipe
 5. as a user I want to be able to share recipes with other users
 6. as a user who previously added a recipe, I want to be able to edit or delete it
 
@@ -131,6 +131,51 @@ possible to categorize by type of cusinine (Indian, Italian etc) and dietary nee
 JavaScript code was run through the [JSHint](https://jshint.com/) analysis tool to check for syntax errors.
 In addition, CSS was checked in the [CSS Validator](https://jigsaw.w3.org/css-validator/) and HTML in the [HTML Validator](https://validator.w3.org/).
 
+All the following testing has been carried out on smaller screens running both iOS and Android and on larger screens
+running both macOS and Windows in multiple browsers. In addition, Chrome's developer tools were used extensively to test on all screen sizes
+including medium size which I did not otherwise have access to.
+
+### Testing user stories
+1. as a user I want to be able to browse all recipes for inspiration:
+  * this is possible from the moment the user lands on the website as there is a "browse all recipes" section on the landing-page.
+  The recipes are grouped by category name so that all recipes belonging to the same category are shown together for a better overview.
+  The recipes are shown 9 at a time and there are navigation arrows at the bottom to navigate between pages.
+2. as a user looking for a specific type of recipe, I want to be able to filter on meal type:
+  * users can do this by clicking on "Categories" in the navigation bar. They will then get an overview of the available categories, and clicking on
+  one of these will take them to a page showing only recipes belonging to that category.
+3. as a user looking to use up some ingredients, I want to be able to perform a search based on ingredients:
+  * by clicking on the "Search" item in the navigation bar, the user is taken to a searchbox where they can enter ingredients or recipe names
+  to get relevant recipes.
+4. as a user with time constraints, I want to be able to filter recipes based on time:
+  * the Search page also has a filtering function, where a user can pick a category and how much time is available to them (up to 30 minutes,
+  between 31 and 60 minutes or over 60 minutes). They will then be shown recipes from the chosen category where preparation time
+  and cooking time together fall within the chosen time parameter.
+3. as a user I want an easy overview of required ingredients so that I can decide if the recipe is for me:
+  * clicking on a recipe will take the user to the recipe view where they will find an overview of the ingredients. The ingredients appear in
+  a bulleted list for clarity and readability.
+5. as a user I want to be able to share recipes with other users:
+  * This can easily be done by clicking "Add a Recipe" in the menu bar and filling out the form that appears. The input fields are labelled
+  and instructions are provided where needed to make the process as intuitive and easy to follow as possible.
+6. as a user who previously added a recipe, I want to be able to edit or delete it:
+  * the user can do this by clicking the "Edit recipe" button in the recipe view. Before they can edit the recipe, they will have to enter the key
+  they provided when they added it. If the key is correct, they will be taken to a form very similar to the "add a recipe" form which is auto-populated with data from the database.
+  If the user wishes to delete the recipe completely, they can do so by checking the "delete" checkbox. There is a disclaimer to warn the user
+  that it cannot be undone.
+
+### Testing CRUD functionality
+- **CREATE**:
+  * This function was tested by myself and friends and family on both smartphones and laptops and it worked as intended. No bugs found. 
+- **READ**:
+  * Again tested by myself and others on different devices. Recipes show up as intended, and no bugs found with rendering data from the database.
+- **UPDATE & DELETE**: initially encountered the KeyError issue described below, but this has been rectified, and there are no longer any issues
+when updating or deleting a recipe.
+
+### Other testing
+In addition to the above testing of the website functionality, testing of all links and buttons was carried out to make sure they worked and
+linked to the right pages/websites.\
+The website's responsiveness was thoroughly tested on various devices and using Chrome Developer Tools to ensure that it looked and worked as intended
+on all screens. An issue with the landing-page in landscape mode on small screens was found and rectified. It is described in detail in the Issues section below.
+
 ### Issues
 - **Updating a recipe**: I initially got a KeyError message when trying to update a recipe. It turned out that the following line was the issue:\
 `if request.form['delete'] == 'checked':`\
@@ -147,6 +192,10 @@ The filter function now works with `results = mongo.db.recipes.find({'category_n
 to remove the flash messages after 5 seconds. A person who kindly tested my website said that the messages did not disappear,
 while for me, there is only an issue with the flash message for successful deletion of a recipe.
 I have not been able to find the cause yet and this bug has therefore been left unresolved for now.
+- **Landing-page text cut off in landscape mode**: when testing the website on small screens in landscape mode, I found that the sub-heading
+was being cut partially off. I rectified this with a media-query for landscape mode and a max-width of 823px (corresponds to the Pixel 2 XL).
+Here I set the upper section of the landing-page to cover the whole viewport height (instead of a third of it) and I reduced the space between
+the heading and the top.
 
 ## Deployment
 This project was developed in Gitpod and pushed regularly to the GitHub repository via git commands in the terminal.\
