@@ -5,7 +5,7 @@
 <section class="main-content">
     <h3>Search Recipes</h3>
     <!-- Search box where a user can search for recipes based on ingredients or recipe name -->
-    <section>
+    <div>
         <div class="form-box search-box w-75 text-center">
             <form action="{{ url_for('search_results') }}" method="POST" class="forms">
                 <label for="searchbox" class="form-label">Search based on ingredients or recipe name:</label>
@@ -15,9 +15,9 @@
                 </div>
             </form>
         </div>
-    </section>
+    </div>
     <!-- User can filter recipes based on category and how much time they have -->
-    <section>
+    <div>
         <div class="form-box search-box w-75 text-center container">
             <p>or pick a category and how long you have to make the recipe</p>
             <form action="{{ url_for('filter_results') }}" method="POST" class="forms">
@@ -46,7 +46,7 @@
                 </div>
             </form>
         </div>
-    </section>
+    </div>
 </section>
 
 {% endblock %}
