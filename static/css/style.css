@@ -102,6 +102,10 @@ h3 {
 	min-width: 5rem;
 }
 
+.btn-custom:hover {
+    color: rgba(255,255,255,.75);
+}
+
 .edit-btn {
 	margin-top: 2rem;
 }
