@@ -62,7 +62,10 @@ def categories():
 def view_category(category_name):
     '''
     Shows all recipes in a given category with 9 per page.
+    Checks first if the category name in the url exists, if not error page is returned.
     '''
+    mongo.db.categories.find_one_or_404({'category_name': category_name})
+
     limit = 9
     offset = int(request.args.get('offset', 0))
     max_number = mongo.db.recipes.count_documents({"category_name": category_name})
@@ -74,8 +77,8 @@ def view_category(category_name):
     if offset > max_number:
         offset = max_number
 
-    return render_template('viewcategory.html',
-                           recipes=recipes,
+    return render_template('recipes.html',
+                           results=recipes,
                            category_heading=category_name,
                            title=category_name,
                            limit=limit,
@@ -190,7 +193,7 @@ def search_results():
     if offset > max_number:
         offset = max_number
 
-    return render_template('searchresults.html',
+    return render_template('recipes.html',
                            results=results,
                            heading=f'Results for "{query}"',
                            title=f'Results for "{query}"',
@@ -215,7 +218,7 @@ def filter_results():
     if request.form.get('time_filter') == 'half_hour':
         results = mongo.db.recipes.find({'category_name': category, "total_time": {"$lte": 30}}).limit(limit).skip(offset)
         max_number = mongo.db.recipes.count_documents({'category_name': category, "total_time": {"$lte": 30}})
-        return render_template('searchresults.html',
+        return render_template('recipes.html',
                                results=results,
                                heading="Results",
                                title="Results",
@@ -227,7 +230,7 @@ def filter_results():
     elif request.form['time_filter'] == 'up_to_hour':
         results = mongo.db.recipes.find({'category_name': category, "total_time": {"$lte": 60, "$gte": 31}}).limit(limit).skip(offset)
         max_number = mongo.db.recipes.count_documents({'category_name': category, "total_time": {"$lte": 60, "$gte": 31}})
-        return render_template('searchresults.html',
+        return render_template('recipes.html',
                                results=results,
                                heading="Results",
                                title="Results",
@@ -239,7 +242,7 @@ def filter_results():
     else:
         results = mongo.db.recipes.find({'category_name': category, "total_time": {"$gte": 61}}).limit(limit).skip(offset)
         max_number = mongo.db.recipes.count_documents({'category_name': category, "total_time": {"$gte": 61}})
-        return render_template('searchresults.html',
+        return render_template('recipes.html',
                                results=results,
                                heading="Results",
                                title="Results",
