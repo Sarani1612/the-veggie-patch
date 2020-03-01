@@ -13,8 +13,8 @@
 			{% for res in results %}
 			<div class="col-md-4 mb-2">
 				<div class="align-items-center justify-content-center h-100 w-100 mx-auto card-div">
-					<img src="{{ res.image_url }}" class="card-img" alt="{{ res.name }}">
-					<a href="{{ url_for('view_recipe', recipe_id=res._id) }}" class="stretched-link">{{ res.name }}</a>
+					<img src="{{ res.image_url }}" class="card-img" alt="{{ res.recipe_name }}">
+					<a href="{{ url_for('view_recipe', recipe_id=res._id) }}" class="stretched-link">{{ res.recipe_name }}</a>
 				</div>
 			</div>
 			{% endfor %}

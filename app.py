@@ -48,7 +48,7 @@ def view_recipe(recipe_id):
     current_recipe = mongo.db.recipes.find_one_or_404({"_id": ObjectId(recipe_id)})
     return render_template('viewrecipe.html',
                            recipe=current_recipe,
-                           title=current_recipe['name'])
+                           title=current_recipe['recipe_name'])
 
 
 @app.route('/categories')
@@ -103,7 +103,7 @@ def insert_recipe():
     total_time is stored to be used in the filtering function further below.
     '''
     recipes = mongo.db.recipes
-    new_recipe = {'name': request.form.get('recipe_name'),
+    new_recipe = {'recipe_name': request.form.get('recipe_name'),
                   'category_name': request.form.get('category_name'),
                   'prep_time': int(request.form.get('prep_time')),
                   'cook_time': int(request.form.get('cook_time')),
@@ -154,7 +154,7 @@ def submit_edit(recipe_id):
         recipes.update_one({"_id": ObjectId(recipe_id)},
                            {"$set":
                            {
-                               'name': request.form.get('recipe_name'),
+                               'recipe_name': request.form.get('recipe_name'),
                                'category_name': request.form.get('category_name'),
                                'prep_time': int(request.form.get('prep_time')),
                                'cook_time': int(request.form.get('cook_time')),

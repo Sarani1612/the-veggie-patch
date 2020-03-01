@@ -5,7 +5,7 @@
 <!-- Shows details for a specific recipe -->
 <section class="main-content">
     <div class=" container">
-        <h3>{{ recipe.name }}</h3>
+        <h3>{{ recipe.recipe_name }}</h3>
         {% with success = get_flashed_messages(category_filter=["success"]) %}
             {% if success %}
                 {% for message in success %}
@@ -18,7 +18,7 @@
         <div class="row view-recipe">
             <!-- Recipe image -->
             <div class="col-md-6 recipe-border">
-                <img src="{{ recipe.image_url }}" class="recipe-img w-100" alt="{{ recipe.name }}">
+                <img src="{{ recipe.image_url }}" class="recipe-img w-100" alt="{{ recipe.recipe_name }}">
             </div>
             <!-- Recipe info -->
             <div class="col-md-6 recipe-info">
