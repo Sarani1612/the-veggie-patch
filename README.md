@@ -16,7 +16,8 @@
     1. [Testing User Stories](#testing-user-stories)
     2. [Testing CRUD functionality](#testing-crud-functionality)
     3. [Additional Testing](#additional-testing)
-    4. [Issues](#issues)
+    4. [Unit Testing](#unit-testing)
+    5. [Issues](#issues)
 6. [Deployment](#deployment)
     1. [Cloning and running the project locally](#cloning-and-running-the-project-locally)
 7. [Credits](#credits)
@@ -199,6 +200,13 @@ linked to the right pages/websites.\
 The website's responsiveness was thoroughly tested on various devices and using Chrome Developer Tools to ensure that it looked and worked as intended
 on all screens. An issue with the landing-page in landscape mode on small screens was found and rectified. It is described in detail in the Issues section below.
 
+### Unit Testing
+Some unit tests have been created in the [test.py](test.py) file. Due to time constraints and to the fact that this is my first foray
+into writing unit tests, these tests are fairly basic and mostly test the app routes. There are also a couple of tests for adding and viewing a recipe
+using a mock example. As my knowledge of and experience with writing tests are still very limited, I was not able to create tests for editing and deleting
+recipes as the relevant routes contain if statements which I am still not sure how to deal with in terms of testing. I am planning to give it 
+another go once I get more familiar with testing.
+
 ### Issues
 - **Updating a recipe**: I initially got a KeyError message when trying to update a recipe. It turned out that the following line was the issue:\
 `if request.form['delete'] == 'checked':`\
@@ -245,9 +253,15 @@ These instructions and more info can be found at [this GitHub Help Page](https:/
 - [This article](https://pythonise.com/series/learning-flask/flask-message-flashing) by Julian Nash was used as a guide for flash messages
 - I adapted the code for pagination in [this repository](https://github.com/MiroslavSvec/DCD_lead/tree/pagination) by Miroslav Svec
 (link found in Code Institute Slack channel).
+- [These](https://www.makeschool.com/academy/track/standalone/playlistr-video-playlists-with-flask-and-mongodb-1c/adding-tests) testing
+examples from Make School was used as a help for writing my own unit tests.
 
 ### Content and Media
 - Landing page background photo is from [Pexels](https://www.pexels.com/)
 - Recipes including photos are from the [BBC goodfood](https://www.bbcgoodfood.com/) website
+
+### Acknowledgments
+- Thanks to my mentor, Aaron Sinnott, for getting me started with unit testing.
+- Thanks to my partner and to my sister for testing the website
 
 *This website is for educational purposes only. It was created as part of the Code Institute Full Stack Developer course.*
