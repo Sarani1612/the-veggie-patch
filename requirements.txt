@@ -5,4 +5,4 @@ Flask-PyMongo==2.3.0
 Flask-Testing==0.8.1
 itsdangerous==2.1.2
 pymongo==4.3.2
-Werkzeug==2.2.2
+Werkzeug==2.2.3
